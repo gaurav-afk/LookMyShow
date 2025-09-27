@@ -13,6 +13,6 @@ fun AppNavGraph(navController: NavHostController) {
     NavHost(navController, startDestination = "login") {
         composable("login") { LoginScreen(navController) }
         composable("signup") { SignUpScreen(navController) }
-        composable("home") { HomeScreen() }
+        composable("home") { HomeScreen(navController) }
     }
 }

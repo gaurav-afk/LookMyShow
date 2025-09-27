@@ -32,7 +32,13 @@ fun SignUpScreen(navController: NavController, viewModel: AuthViewModel = hiltVi
         when(state) {
             AuthViewModel.AuthState.Loading -> Text("Loading...")
             is AuthViewModel.AuthState.Error -> Text("Error: ${(state as AuthViewModel.AuthState.Error).message}")
-            AuthViewModel.AuthState.Success -> LaunchedEffect(Unit) { navController.navigate("home") }
+            AuthViewModel.AuthState.Success -> LaunchedEffect(Unit) {
+                if (state is AuthViewModel.AuthState.Success) {
+                    navController.navigate("home") {
+                        popUpTo("login") { inclusive = true }
+                    }
+                }
+            }
             else -> {}
         }
     }

@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.androidx.credentials)
     implementation(libs.androidx.credentials.play.services.auth)
     implementation(libs.googleid)
+    implementation(libs.androidx.compose.material.icons.extended)
     kapt("com.google.dagger:hilt-compiler:2.56.2")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0") // Or the latest version
 
@@ -60,8 +61,8 @@ dependencies {
     val nav_version = "2.9.4"
     // Jetpack Compose integration
     implementation("androidx.navigation:navigation-compose:$nav_version")
-
-
+    implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
+    implementation("androidx.compose.material:material-icons-extended")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
