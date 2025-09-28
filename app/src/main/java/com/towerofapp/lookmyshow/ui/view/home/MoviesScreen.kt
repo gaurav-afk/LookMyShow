@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.towerofapp.lookmyshow.data.model.Movie
-import com.towerofapp.lookmyshow.ui.viewmodel.MoviesUiState
 import com.towerofapp.lookmyshow.ui.viewmodel.MoviesViewModel
 
 @Composable
@@ -22,17 +21,17 @@ fun MoviesScreen(viewModel: MoviesViewModel = hiltViewModel()) {
 
     Box(modifier = Modifier.fillMaxSize()) {
         when (val state = uiState) {
-            is MoviesUiState.Loading -> {
+            is MoviesViewModel.MoviesUiState.Loading -> {
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
             }
-            is MoviesUiState.Success -> {
+            is MoviesViewModel.MoviesUiState.Success -> {
                 if (state.movies.isEmpty()) {
                     Text("No movies showing today.", modifier = Modifier.align(Alignment.Center))
                 } else {
                     MovieList(movies = state.movies)
                 }
             }
-            is MoviesUiState.Error -> {
+            is MoviesViewModel.MoviesUiState.Error -> {
                 Text(
                     text = "Error: ${state.message}",
                     modifier = Modifier.align(Alignment.Center).padding(16.dp)

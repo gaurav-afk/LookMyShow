@@ -19,6 +19,5 @@ class MovieRepositoryImpl @Inject constructor(
         } catch (e: Exception) {
             Result.failure(e)
         }
-
     }
 }
