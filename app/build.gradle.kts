@@ -58,8 +58,11 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0") // Or the latest version
 
 
+    // Google Maps
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
+    implementation("com.google.maps.android:maps-compose:2.11.0")
+
     val nav_version = "2.9.4"
-    // Jetpack Compose integration
     implementation("androidx.navigation:navigation-compose:$nav_version")
     implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
     implementation("androidx.compose.material:material-icons-extended")

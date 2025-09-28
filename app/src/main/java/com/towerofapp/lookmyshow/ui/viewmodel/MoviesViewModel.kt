@@ -3,6 +3,7 @@ package com.towerofapp.lookmyshow.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.towerofapp.lookmyshow.data.model.Movie
+import com.towerofapp.lookmyshow.data.model.Theater
 import com.towerofapp.lookmyshow.domain.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,9 +20,17 @@ class MoviesViewModel @Inject constructor(
     private val _uiState = MutableStateFlow<MoviesUiState>(MoviesUiState.Loading)
     val uiState: StateFlow<MoviesUiState> = _uiState.asStateFlow()
 
+    val allTheaters: List<Theater>
+        get() = _uiState.value.let { state ->
+            if (state is MoviesViewModel.MoviesUiState.Success) {
+                state.movies.flatMap { it.theaters }.distinctBy { it.id }
+            } else emptyList()
+        }
+
     init {
         fetchMovies()
     }
+
 
     fun fetchMovies() {
         viewModelScope.launch {

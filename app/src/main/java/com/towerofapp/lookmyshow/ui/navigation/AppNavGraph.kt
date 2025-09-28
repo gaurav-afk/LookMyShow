@@ -9,8 +9,8 @@ import com.towerofapp.lookmyshow.ui.view.auth.SignUpScreen
 import com.towerofapp.lookmyshow.ui.view.home.HomeScreen
 
 @Composable
-fun AppNavGraph(navController: NavHostController) {
-    NavHost(navController, startDestination = "login") {
+fun AppNavGraph(navController: NavHostController, startDestination: String) {
+    NavHost(navController, startDestination = startDestination) {
         composable("login") { LoginScreen(navController) }
         composable("signup") { SignUpScreen(navController) }
         composable("home") { HomeScreen(navController) }
