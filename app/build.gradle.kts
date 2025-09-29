@@ -57,7 +57,7 @@ dependencies {
     implementation(libs.play.services.maps)
     kapt("com.google.dagger:hilt-compiler:2.56.2")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0") // Or the latest version
-
+    implementation("io.coil-kt:coil-compose:2.4.0")
 
     // MapLibre SDK
     implementation("org.maplibre.gl:android-sdk:11.13.5")

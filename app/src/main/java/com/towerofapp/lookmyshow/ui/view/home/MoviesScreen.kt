@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.towerofapp.lookmyshow.data.model.Movie
+import com.towerofapp.lookmyshow.ui.components.MovieItem
 import com.towerofapp.lookmyshow.ui.viewmodel.MoviesViewModel
 
 @Composable

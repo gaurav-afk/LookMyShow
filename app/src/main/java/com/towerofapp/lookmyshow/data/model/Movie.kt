@@ -18,7 +18,9 @@ data class Movie(
     @Json(name = "genre") val genre: List<String>,
     @Json(name = "duration_mins") val durationMins: Int,
     @Json(name = "poster_url") val posterUrl: String,
-    @Json(name = "theaters") val theaters: List<Theater>
+    @Json(name = "theaters") val theaters: List<Theater>,
+    @Json(name = "votes") val votes: Int,
+    @Json(name = "rating") val rating: Float
 )
 
 @JsonClass(generateAdapter = true)
