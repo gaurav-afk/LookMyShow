@@ -1,32 +1,16 @@
-import android.net.http.SslCertificate.restoreState
-import android.net.http.SslCertificate.saveState
+package com.towerofapp.lookmyshow.ui.components
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.LibraryMusic
-import androidx.compose.material.icons.filled.LiveTv
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.VideoLibrary
-import androidx.compose.material3.BottomAppBarState
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
@@ -38,7 +22,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.towerofapp.lookmyshow.ui.navigation.BottomNavItem
-import kotlin.collections.forEachIndexed
+
 
 @Composable
 fun GlassNavigationBar(
@@ -47,17 +31,6 @@ fun GlassNavigationBar(
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
-    val backgroundGradient = if (!isSystemInDarkTheme()) {
-        listOf(
-            Color.White.copy(alpha = 0.25f),
-            Color.White.copy(alpha = 0.05f)
-        )
-    } else {
-        listOf(
-            Color.Black.copy(alpha = 0.35f),
-            Color.Black.copy(alpha = 0.15f)
-        )
-    }
 
     Box(
         modifier = Modifier
@@ -65,9 +38,9 @@ fun GlassNavigationBar(
             .padding(16.dp)
             .clip(RoundedCornerShape(50.dp))
             .background(
-                Brush.linearGradient(backgroundGradient)
+                Brush.linearGradient(colors = listOf(Color.Black.copy(alpha = 0.85f),
+                    Color.Black.copy(alpha = 0.85f)))
             )
-            .blur(25.dp)
             .border(
                 width = 1.dp,
                 color = Color.White.copy(alpha = 0.4f),
@@ -107,14 +80,13 @@ fun GlassNavigationBar(
                     Icon(
                         imageVector = item.icon,
                         contentDescription = item.label,
-                        tint = if (isSelected) MaterialTheme.colorScheme.onSurface
-                        else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+                        tint = if (isSelected) Color.Red.copy(alpha = 0.9f) else Color.White,
                         modifier = Modifier.size(26.dp)
                     )
                     Text(
                         text = item.label,
                         fontSize = 12.sp,
-                        color = if (isSelected) Color.White else Color.White.copy(alpha = 0.6f)
+                        color = if (isSelected) Color.Red.copy(alpha = 0.9f) else Color.White,
                     )
                 }
             }
