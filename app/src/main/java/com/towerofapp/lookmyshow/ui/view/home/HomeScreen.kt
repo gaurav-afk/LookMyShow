@@ -1,6 +1,6 @@
 package com.towerofapp.lookmyshow.ui.view.home
 
-import GlassNavigationBar
+
 import android.R.attr.onClick
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
@@ -18,6 +18,7 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
+import com.towerofapp.lookmyshow.ui.components.GlassNavigationBar
 import com.towerofapp.lookmyshow.ui.navigation.BottomNavItem
 import com.towerofapp.lookmyshow.ui.theme.LookMyShowTheme
 import com.towerofapp.lookmyshow.ui.viewmodel.MoviesViewModel
@@ -29,7 +30,7 @@ fun HomeScreen(appNavController: NavHostController,viewModel: MoviesViewModel = 
     val bottomNavHostController = rememberNavController()
     val items = listOf(
         BottomNavItem.Movies,
-        BottomNavItem.Find,
+        BottomNavItem.Map,
         BottomNavItem.Profile
     )
 
@@ -50,7 +51,8 @@ fun HomeScreen(appNavController: NavHostController,viewModel: MoviesViewModel = 
 fun HomeNavGraph(
     bottomNavHostController: NavHostController,
     appNavController: NavHostController,
-    moviesViewModel: MoviesViewModel
+    moviesViewModel: MoviesViewModel,
+
 ) {
     NavHost(
         navController = bottomNavHostController,
@@ -59,7 +61,7 @@ fun HomeNavGraph(
         composable(BottomNavItem.Movies.route) {
             MoviesScreen()
         }
-        composable(BottomNavItem.Find.route) { FindScreen(moviesViewModel.allTheaters) }
+        composable(BottomNavItem.Map.route) { MapScreen() }
         composable(BottomNavItem.Profile.route) { ProfileScreen(appNavController = appNavController) }
     }
 }

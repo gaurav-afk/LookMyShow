@@ -16,7 +16,7 @@ android {
 
     defaultConfig {
         applicationId = "com.towerofapp.lookmyshow"
-        minSdk = 24
+        minSdk = 31
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -54,18 +54,22 @@ dependencies {
     implementation(libs.androidx.credentials.play.services.auth)
     implementation(libs.googleid)
     implementation(libs.androidx.compose.material.icons.extended)
+    implementation(libs.play.services.maps)
     kapt("com.google.dagger:hilt-compiler:2.56.2")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0") // Or the latest version
 
 
-    // Google Maps
-    implementation("com.google.android.gms:play-services-maps:18.1.0")
-    implementation("com.google.maps.android:maps-compose:2.11.0")
+    // MapLibre SDK
+    implementation("org.maplibre.gl:android-sdk:11.13.5")
+    implementation("org.maplibre.gl:android-plugin-annotation-v9:1.0.0")
 
     val nav_version = "2.9.4"
     implementation("androidx.navigation:navigation-compose:$nav_version")
     implementation("com.squareup.moshi:moshi-kotlin:1.15.1")
+    implementation("androidx.compose.material3:material3:1.2.0")
+
     implementation("androidx.compose.material:material-icons-extended")
+    implementation("androidx.compose.ui:ui:1.5.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

@@ -1,4 +1,4 @@
-package com.towerofapp.lookmyshow.ui.view.home // Or your relevant package
+package com.towerofapp.lookmyshow.ui.view.home
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding

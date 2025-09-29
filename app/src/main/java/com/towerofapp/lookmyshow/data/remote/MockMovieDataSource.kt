@@ -123,6 +123,210 @@ class MockMovieDataSource @Inject constructor(private val moshi: Moshi) {
               "showtimes": ["19:35"]
             }
           ]
+        },
+                {
+          "id": "mv009",
+          "title": "Chainsaw Man – The Movie: Reze Arc",
+          "language": "Japanese (with English subtitles)",
+          "genre": ["Anime", "Action"],
+          "duration_mins": 130,
+          "poster_url": "https://image.tmdb.org/t/p/w500/chainsaw_man_reze.jpg",
+          "theaters": [
+            {
+              "id": "th001",
+              "name": "PVR Select City Walk",
+              "address": "Select City Walk, Saket, Delhi",
+              "latitude": 28.5246,
+              "longitude": 77.2100,
+              "showtimes": ["09:40", "15:25", "21:10"]
+            },
+            {
+              "id": "th003",
+              "name": "Cinepolis Pacific NSP2",
+              "address": "Nehru Place, Delhi",
+              "latitude": 28.5470,
+              "longitude": 77.2622,
+              "showtimes": ["20:00", "22:20"]
+            },
+            {
+              "id": "th004",
+              "name": "Cinepolis Janak Cinema",
+              "address": "Janakpuri, Delhi",
+              "latitude": 28.6093,
+              "longitude": 77.0872,
+              "showtimes": ["19:35"]
+            }
+          ]
+        },
+                {
+          "id": "mv008",
+          "title": "Chainsaw Man – The Movie: Reze Arc",
+          "language": "Japanese (with English subtitles)",
+          "genre": ["Anime", "Action"],
+          "duration_mins": 130,
+          "poster_url": "https://image.tmdb.org/t/p/w500/chainsaw_man_reze.jpg",
+          "theaters": [
+            {
+              "id": "th001",
+              "name": "PVR Select City Walk",
+              "address": "Select City Walk, Saket, Delhi",
+              "latitude": 28.5246,
+              "longitude": 77.2100,
+              "showtimes": ["09:40", "15:25", "21:10"]
+            },
+            {
+              "id": "th003",
+              "name": "Cinepolis Pacific NSP2",
+              "address": "Nehru Place, Delhi",
+              "latitude": 28.5470,
+              "longitude": 77.2622,
+              "showtimes": ["20:00", "22:20"]
+            },
+            {
+              "id": "th004",
+              "name": "Cinepolis Janak Cinema",
+              "address": "Janakpuri, Delhi",
+              "latitude": 28.6093,
+              "longitude": 77.0872,
+              "showtimes": ["19:35"]
+            }
+          ]
+        },
+                {
+          "id": "mv007",
+          "title": "Chainsaw Man – The Movie: Reze Arc",
+          "language": "Japanese (with English subtitles)",
+          "genre": ["Anime", "Action"],
+          "duration_mins": 130,
+          "poster_url": "https://image.tmdb.org/t/p/w500/chainsaw_man_reze.jpg",
+          "theaters": [
+            {
+              "id": "th001",
+              "name": "PVR Select City Walk",
+              "address": "Select City Walk, Saket, Delhi",
+              "latitude": 28.5246,
+              "longitude": 77.2100,
+              "showtimes": ["09:40", "15:25", "21:10"]
+            },
+            {
+              "id": "th003",
+              "name": "Cinepolis Pacific NSP2",
+              "address": "Nehru Place, Delhi",
+              "latitude": 28.5470,
+              "longitude": 77.2622,
+              "showtimes": ["20:00", "22:20"]
+            },
+            {
+              "id": "th004",
+              "name": "Cinepolis Janak Cinema",
+              "address": "Janakpuri, Delhi",
+              "latitude": 28.6093,
+              "longitude": 77.0872,
+              "showtimes": ["19:35"]
+            }
+          ]
+        },
+                {
+          "id": "mv006",
+          "title": "Chainsaw Man – The Movie: Reze Arc",
+          "language": "Japanese (with English subtitles)",
+          "genre": ["Anime", "Action"],
+          "duration_mins": 130,
+          "poster_url": "https://image.tmdb.org/t/p/w500/chainsaw_man_reze.jpg",
+          "theaters": [
+            {
+              "id": "th001",
+              "name": "PVR Select City Walk",
+              "address": "Select City Walk, Saket, Delhi",
+              "latitude": 28.5246,
+              "longitude": 77.2100,
+              "showtimes": ["09:40", "15:25", "21:10"]
+            },
+            {
+              "id": "th003",
+              "name": "Cinepolis Pacific NSP2",
+              "address": "Nehru Place, Delhi",
+              "latitude": 28.5470,
+              "longitude": 77.2622,
+              "showtimes": ["20:00", "22:20"]
+            },
+            {
+              "id": "th004",
+              "name": "Cinepolis Janak Cinema",
+              "address": "Janakpuri, Delhi",
+              "latitude": 28.6093,
+              "longitude": 77.0872,
+              "showtimes": ["19:35"]
+            }
+          ]
+        },
+                {
+          "id": "mv005",
+          "title": "Chainsaw Man – The Movie: Reze Arc",
+          "language": "Japanese (with English subtitles)",
+          "genre": ["Anime", "Action"],
+          "duration_mins": 130,
+          "poster_url": "https://image.tmdb.org/t/p/w500/chainsaw_man_reze.jpg",
+          "theaters": [
+            {
+              "id": "th001",
+              "name": "PVR Select City Walk",
+              "address": "Select City Walk, Saket, Delhi",
+              "latitude": 28.5246,
+              "longitude": 77.2100,
+              "showtimes": ["09:40", "15:25", "21:10"]
+            },
+            {
+              "id": "th003",
+              "name": "Cinepolis Pacific NSP2",
+              "address": "Nehru Place, Delhi",
+              "latitude": 28.5470,
+              "longitude": 77.2622,
+              "showtimes": ["20:00", "22:20"]
+            },
+            {
+              "id": "th004",
+              "name": "Cinepolis Janak Cinema",
+              "address": "Janakpuri, Delhi",
+              "latitude": 28.6093,
+              "longitude": 77.0872,
+              "showtimes": ["19:35"]
+            }
+          ]
+        },        
+        {
+          "id": "mv004",
+          "title": "Chainsaw Man – The Movie: Reze Arc",
+          "language": "Japanese (with English subtitles)",
+          "genre": ["Anime", "Action"],
+          "duration_mins": 130,
+          "poster_url": "https://image.tmdb.org/t/p/w500/chainsaw_man_reze.jpg",
+          "theaters": [
+            {
+              "id": "th001",
+              "name": "PVR Select City Walk",
+              "address": "Select City Walk, Saket, Delhi",
+              "latitude": 28.5246,
+              "longitude": 77.2100,
+              "showtimes": ["09:40", "15:25", "21:10"]
+            },
+            {
+              "id": "th003",
+              "name": "Cinepolis Pacific NSP2",
+              "address": "Nehru Place, Delhi",
+              "latitude": 28.5470,
+              "longitude": 77.2622,
+              "showtimes": ["20:00", "22:20"]
+            },
+            {
+              "id": "th004",
+              "name": "Cinepolis Janak Cinema",
+              "address": "Janakpuri, Delhi",
+              "latitude": 28.6093,
+              "longitude": 77.0872,
+              "showtimes": ["19:35"]
+            }
+          ]
         }
       ]
     }
