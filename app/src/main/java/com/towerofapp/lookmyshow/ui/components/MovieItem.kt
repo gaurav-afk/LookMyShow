@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.StarHalf
 import androidx.compose.material.icons.filled.Star
@@ -36,11 +38,18 @@ import com.towerofapp.lookmyshow.data.model.Movie
 import coil.compose.rememberAsyncImagePainter
 import okhttp3.internal.notifyAll
 import java.math.RoundingMode
+import java.text.DecimalFormat
 
 fun formatVotes(votes: Int): String {
     return when {
-        votes >= 1000000 -> "${votes / 1000000f}M votes"
-        votes >= 1000 -> "${(votes / 1000f).toBigDecimal().setScale(1, RoundingMode.DOWN)}k votes"
+        votes >= 1_000_000 -> {
+            val df = DecimalFormat("#.#")
+            "${df.format(votes / 1_000_000.0)}M votes"
+        }
+        votes >= 1_000 -> {
+            val df = DecimalFormat("#.#")
+            "${df.format(votes / 1_000.0)}k votes"
+        }
         else -> "$votes votes"
     }
 }
@@ -50,8 +59,9 @@ fun MovieItem(movie: Movie) {
     Column {
         Card(
             modifier = Modifier
-                .width(200.dp),
-            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+                .wrapContentHeight()
+                .width(180.dp),
+            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
         ) {
             Column {
                 Image(
@@ -59,13 +69,14 @@ fun MovieItem(movie: Movie) {
                     contentDescription = "Movie poster",
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(250.dp),
+                        .aspectRatio(0.7f),
                     contentScale = ContentScale.Crop
                 )
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 10.dp),
+                        .background(color = Color(0xFFbebebf))
+                        .padding(horizontal = 15.dp),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween
 
@@ -74,19 +85,22 @@ fun MovieItem(movie: Movie) {
                         Icon(
                             imageVector = Icons.Default.Star,
                             contentDescription = null,
-                            tint = Color(0xFFFFD700),
+                            tint = Color(0xFFff6410),
                             modifier = Modifier.size(16.dp)
                         )
+                        Spacer(modifier = Modifier.width(2.dp))
                         Text(
                             text = movie.rating.toString(),
                             fontSize = 12.sp,
-                            color = Color.Gray
+                            color = Color.DarkGray,
+                            fontWeight = FontWeight.Medium
                         )
                     }
                     Text(
                         text = formatVotes(movie.votes),
-                        fontSize = 12.sp,
-                        color = Color.Gray
+                        color = Color.DarkGray,
+                        fontWeight = FontWeight.Medium,
+                        fontSize = 12.sp
                     )
                 }
             }

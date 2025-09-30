@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            LookMyShowTheme(darkTheme = true) {
+            LookMyShowTheme(darkTheme = false) {
                 val navController = rememberNavController()
                 val authViewModel: AuthViewModel = hiltViewModel()
 

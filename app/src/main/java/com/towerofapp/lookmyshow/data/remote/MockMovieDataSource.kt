@@ -56,7 +56,7 @@ class MockMovieDataSource @Inject constructor(private val moshi: Moshi) {
       "language": "Japanese (with English subtitles)",
       "genre": ["Anime", "Action"],
       "duration_mins": 125,
-      "votes": 1320,
+      "votes": 190020,
       "rating": 4.7,
       "poster_url": "https://imgs.search.brave.com/NHk4HZw9rDpgBcCFRLu1sJy9PoU6gHUCBv2IRqO2VNw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzM5Lzli/LzgzLzM5OWI4M2Fh/NzIzNzVlM2U4YWFk/NjViNTc2NTZmNjQ2/LmpwZw",
       "theaters": [

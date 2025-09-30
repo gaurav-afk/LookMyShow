@@ -11,4 +11,3 @@ class MyApp : Application() {
         MapLibre.getInstance(this)
     }
 }
-
