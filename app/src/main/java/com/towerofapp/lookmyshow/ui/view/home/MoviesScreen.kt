@@ -1,6 +1,5 @@
 package com.towerofapp.lookmyshow.ui.view.home
 
-import android.R.attr.text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells

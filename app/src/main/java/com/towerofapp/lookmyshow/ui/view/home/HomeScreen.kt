@@ -18,11 +18,13 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.*
+import com.towerofapp.lookmyshow.data.remote.MockTheatreDataSource
 import com.towerofapp.lookmyshow.ui.components.GlassNavigationBar
 import com.towerofapp.lookmyshow.ui.navigation.BottomNavItem
 import com.towerofapp.lookmyshow.ui.theme.LookMyShowTheme
 import com.towerofapp.lookmyshow.ui.viewmodel.MoviesViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -52,7 +54,6 @@ fun HomeNavGraph(
     bottomNavHostController: NavHostController,
     appNavController: NavHostController,
     moviesViewModel: MoviesViewModel,
-
 ) {
     NavHost(
         navController = bottomNavHostController,
