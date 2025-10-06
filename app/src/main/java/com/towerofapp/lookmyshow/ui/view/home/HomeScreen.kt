@@ -60,7 +60,7 @@ fun HomeNavGraph(
         startDestination = BottomNavItem.Movies.route,
     ) {
         composable(BottomNavItem.Movies.route) {
-            MoviesScreen()
+            MoviesScreen(navController = appNavController)
         }
         composable(BottomNavItem.Map.route) { MapScreen() }
         composable(BottomNavItem.Profile.route) { ProfileScreen(appNavController = appNavController) }

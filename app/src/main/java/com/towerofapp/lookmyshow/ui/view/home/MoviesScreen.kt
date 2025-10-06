@@ -15,12 +15,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.towerofapp.lookmyshow.data.model.Movie
 import com.towerofapp.lookmyshow.ui.components.MovieItem
 import com.towerofapp.lookmyshow.ui.viewmodel.MoviesViewModel
 
 @Composable
-fun MoviesScreen(viewModel: MoviesViewModel = hiltViewModel()) {
+fun MoviesScreen(navController: NavController, viewModel: MoviesViewModel = hiltViewModel()) {
     val uiState by viewModel.uiState.collectAsState()
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -32,7 +33,10 @@ fun MoviesScreen(viewModel: MoviesViewModel = hiltViewModel()) {
                 if (state.movies.isEmpty()) {
                     Text("No movies showing today.", modifier = Modifier.align(Alignment.Center))
                 } else {
-                    MovieList(movies = state.movies)
+                    MovieList(
+                        movies = state.movies,
+                        navController = navController
+                    )
                 }
             }
             is MoviesViewModel.MoviesUiState.Error -> {
@@ -45,28 +49,40 @@ fun MoviesScreen(viewModel: MoviesViewModel = hiltViewModel()) {
     }
 }
 
+
 @Composable
-fun MovieList(movies: List<Movie>) {
+fun MovieList(
+    movies: List<Movie>,
+    navController: NavController
+) {
     Column {
-        Box(modifier = Modifier
-            .statusBarsPadding()
-            .fillMaxWidth()
-            .height(42.dp)
-            .background(Color.Red),
+        Box(
+            modifier = Modifier
+                .statusBarsPadding()
+                .fillMaxWidth()
+                .height(42.dp)
+                .background(Color.Red),
             contentAlignment = Alignment.Center
-            ){
+        ) {
             Text(
                 color = Color.White,
-                text = "Now showing: ${movies.size} movies")
+                text = "Now showing: ${movies.size} movies"
+            )
         }
+
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
             modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(16.dp, bottom = 120.dp, top = 20.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
-            ) {
+        ) {
             items(movies, key = { it.id }) { movie ->
-                MovieItem(movie = movie)
+                MovieItem(
+                    movie = movie,
+                    onClick = {
+                        navController.navigate("theatres/${movie.id}")
+                    }
+                )
             }
         }
     }

@@ -4,6 +4,7 @@ import android.R.attr.bottom
 import android.R.attr.text
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -34,6 +35,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.towerofapp.lookmyshow.data.model.Movie
 import coil.compose.rememberAsyncImagePainter
 import okhttp3.internal.notifyAll
@@ -55,11 +57,12 @@ fun formatVotes(votes: Int): String {
 }
 
 @Composable
-fun MovieItem(movie: Movie) {
+fun MovieItem(movie: Movie, onClick: () -> Unit) {
     Column {
         Card(
             modifier = Modifier
                 .wrapContentHeight()
+                .clickable{ onClick() }
                 .width(180.dp),
             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
         ) {
