@@ -94,7 +94,7 @@ fun MovieItem(movie: Movie, onClick: () -> Unit) {
                         Spacer(modifier = Modifier.width(2.dp))
                         Text(
                             text = movie.rating.toString(),
-                            fontSize = 12.sp,
+                            fontSize = 13.sp,
                             color = Color.DarkGray,
                             fontWeight = FontWeight.Medium
                         )
@@ -103,7 +103,7 @@ fun MovieItem(movie: Movie, onClick: () -> Unit) {
                         text = formatVotes(movie.votes),
                         color = Color.DarkGray,
                         fontWeight = FontWeight.Medium,
-                        fontSize = 12.sp
+                        fontSize = 13.sp
                     )
                 }
             }
@@ -111,7 +111,7 @@ fun MovieItem(movie: Movie, onClick: () -> Unit) {
         Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = "Title: ${movie.title}",
-            color = Color.White,
+            color = Color.Black,
             style = TextStyle(
                 color = Color.White,
                 fontSize = 12.sp,
@@ -119,7 +119,7 @@ fun MovieItem(movie: Movie, onClick: () -> Unit) {
             ),
             modifier = Modifier
                 .width(200.dp)
-                .padding(horizontal = 4.dp)
+                .padding(start = 4.dp, end = 4.dp, bottom = 8.dp, top = 0.dp)
         )
     }
 }
