@@ -2,6 +2,7 @@ package com.towerofapp.lookmyshow.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import coil.util.CoilUtils.result
 import com.towerofapp.lookmyshow.domain.usecase.IsUserLoggedInUseCase
 import com.towerofapp.lookmyshow.domain.usecase.LoginUseCase
 import com.towerofapp.lookmyshow.domain.usecase.LogoutUseCase
@@ -34,12 +35,20 @@ class AuthViewModel @Inject constructor(
     }
 
     fun login(email: String, password: String) = viewModelScope.launch {
+        if (email.isBlank() || password.isBlank()) {
+            _authState.value = AuthState.Error("Email and password cannot be empty.")
+            return@launch
+        }
         _authState.value = AuthState.Loading
-        _authState.value = try {
-            loginUseCase(email, password)
-            AuthState.Success
+        try {
+            val result = loginUseCase(email, password)
+            if (result.isSuccess) {
+                _authState.value = AuthState.Success
+            } else {
+                _authState.value = AuthState.Error(result.exceptionOrNull()?.message ?: "Login failed")
+            }
         } catch (e: Exception) {
-            AuthState.Error(e.message)
+            _authState.value = AuthState.Error(e.message ?: "Unknown error")
         }
     }
 
