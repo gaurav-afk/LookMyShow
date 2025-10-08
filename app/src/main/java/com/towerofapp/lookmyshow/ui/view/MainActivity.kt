@@ -11,6 +11,7 @@ import com.towerofapp.lookmyshow.ui.theme.LookMyShowTheme
 import com.towerofapp.lookmyshow.ui.viewmodel.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -20,20 +21,31 @@ class MainActivity : ComponentActivity() {
             LookMyShowTheme(darkTheme = false) {
                 val navController = rememberNavController()
                 val authViewModel: AuthViewModel = hiltViewModel()
+                val state by authViewModel.authState.collectAsState()
 
-                // Checking if user is logged in
                 LaunchedEffect(Unit) {
-                    authViewModel.checkUser() // setting authState to Success if already logged in
+                    authViewModel.checkUser()
                 }
 
-                val startDestination = if (authViewModel.authState.collectAsState().value is AuthViewModel.AuthState.Success) {
-                    "home"
-                } else {
-                    "login"
-                }
+                AppNavGraph(navController = navController, startDestination = "login")
 
-                AppNavGraph(navController,startDestination)
+                LaunchedEffect(state) {
+                    when (state) {
+                        is AuthViewModel.AuthState.Success -> {
+                            navController.navigate("home") {
+                                popUpTo("login") { inclusive = true }
+                            }
+                        }
+                        AuthViewModel.AuthState.Idle -> {
+                            navController.navigate("login") {
+                                popUpTo("home") { inclusive = true }
+                            }
+                        }
+                        else -> {}
+                    }
+                }
             }
         }
     }
 }
+

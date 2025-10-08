@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 
 @Composable
@@ -27,7 +28,12 @@ fun ProfileScreen(appNavController: NavController, authViewModel: AuthViewModel 
         Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
             Text("Profile Screen")
             Spacer(modifier = Modifier.height(16.dp))
-            Button(onClick = { authViewModel.logout() }) {
+            Button(onClick = {
+                authViewModel.logout()
+                appNavController.navigate("login") {
+                    popUpTo("home") { inclusive = true } // clear home from back stack
+                }
+            }) {
                 Text("Logout")
             }
         }
