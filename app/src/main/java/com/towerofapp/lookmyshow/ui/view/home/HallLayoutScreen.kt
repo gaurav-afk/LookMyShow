@@ -2,6 +2,7 @@ package com.towerofapp.lookmyshow.ui.view.home
 
 import android.text.Layout
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.magnifier
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
@@ -11,11 +12,13 @@ import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.towerofapp.lookmyshow.ui.components.HallLayoutView
+import com.towerofapp.lookmyshow.ui.components.HallScreen
 import com.towerofapp.lookmyshow.ui.components.model.HallLayout
 import com.towerofapp.lookmyshow.ui.components.model.Seat
 import com.towerofapp.lookmyshow.ui.components.model.SeatStatus
 import com.towerofapp.lookmyshow.ui.components.model.SeatType
 import java.net.URLDecoder
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -74,7 +77,7 @@ fun HallLayoutScreen(
                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
             )
 
-            Spacer(modifier = Modifier.height(12.dp))
+
 
             HallLayoutView(
                 hallLayout = hallLayout,
@@ -86,7 +89,9 @@ fun HallLayoutScreen(
                 println("Selected seat: ${selectedSeat.row}${selectedSeat.number}")
             }
 
+            Spacer(modifier = Modifier.height(12.dp))
 
+            HallScreen()
         }
     }
 }
