@@ -1,15 +1,25 @@
 package com.towerofapp.lookmyshow.ui.view.home
 
+import android.R.attr.navigationIcon
+import android.R.attr.padding
+import android.R.attr.text
 import android.text.Layout
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.magnifier
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.towerofapp.lookmyshow.ui.components.HallLayoutView
 import com.towerofapp.lookmyshow.ui.components.HallScreen
@@ -17,6 +27,7 @@ import com.towerofapp.lookmyshow.ui.components.model.HallLayout
 import com.towerofapp.lookmyshow.ui.components.model.Seat
 import com.towerofapp.lookmyshow.ui.components.model.SeatStatus
 import com.towerofapp.lookmyshow.ui.components.model.SeatType
+import org.intellij.lang.annotations.JdkConstants
 import java.net.URLDecoder
 
 
@@ -30,10 +41,9 @@ fun HallLayoutScreen(
 ) {
 
     var selectedSeats by remember { mutableStateOf(setOf<Seat>()) }
-    // Decode timeSlot if you URL-encoded it
     val decodedTimeSlot = timeSlot.replace("-", ":")
 
-    // Sample hall layout (replace with API call later)
+    // Sample hall layout
     val hallLayout = remember {
         HallLayout(
             rows = listOf("A", "B", "C", "D", "E"),
@@ -50,7 +60,30 @@ fun HallLayoutScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Select Seats") },
+                title = {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ){
+
+                        Text("Select Seats ")
+                        if (selectedSeats.size>0){
+                            Box(
+                                modifier = Modifier
+                                    .size(28.dp)
+                                    .background(color = Color.Red, shape = CircleShape),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = "${selectedSeats.size}",
+                                    fontSize = 12.sp,
+                                    color = Color.White,
+                                )
+                            }
+                        }
+                    }
+                    },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
@@ -60,6 +93,34 @@ fun HallLayoutScreen(
                     }
                 }
             )
+        },
+        bottomBar = {
+            if (selectedSeats.isNotEmpty()) {
+                BottomAppBar(
+                    modifier = Modifier
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Row(
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .fillMaxWidth(0.7f)
+                                .background(color = Color.Red, shape = RoundedCornerShape(8.dp))
+                                .padding(vertical = 12.dp)
+                        ) {
+                            Text(
+                                text = "Pay ${550 * selectedSeats.size}",
+                                color = Color.White
+                            )
+                        }
+                    }
+
+                }
+            }
         }
     ) { padding ->
         Column(
@@ -86,7 +147,6 @@ fun HallLayoutScreen(
                     .fillMaxWidth()
                     .weight(1f),
             ) { seat ->
-                // Handle seat selection locally (for now just print)
                 if (seat in selectedSeats){
                     selectedSeats -= seat
                     seat.status = SeatStatus.AVAILABLE
