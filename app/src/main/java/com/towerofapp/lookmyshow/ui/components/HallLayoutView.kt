@@ -58,11 +58,8 @@ fun SeatView(seat: Seat, onClick: (Seat) -> Unit) {
             .background(color,
                 shape = RoundedCornerShape(2.dp))
             .clickable {
-                if (seat.status == SeatStatus.AVAILABLE) {
+                if (seat.status == SeatStatus.AVAILABLE || seat.status == SeatStatus.SELECTED) {
                     seat.status = SeatStatus.SELECTED
-                    onClick(seat)
-                } else if (seat.status == SeatStatus.SELECTED) {
-                    seat.status = SeatStatus.AVAILABLE
                     onClick(seat)
                 }
             }

@@ -29,6 +29,7 @@ fun HallLayoutScreen(
     movieTitle: String
 ) {
 
+    var selectedSeats by remember { mutableStateOf(setOf<Seat>()) }
     // Decode timeSlot if you URL-encoded it
     val decodedTimeSlot = timeSlot.replace("-", ":")
 
@@ -84,9 +85,17 @@ fun HallLayoutScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f),
-            ) { selectedSeat ->
+            ) { seat ->
                 // Handle seat selection locally (for now just print)
-                println("Selected seat: ${selectedSeat.row}${selectedSeat.number}")
+                if (seat in selectedSeats){
+                    selectedSeats -= seat
+                    seat.status = SeatStatus.AVAILABLE
+                }else{
+                    selectedSeats += seat
+                    seat.status = SeatStatus.SELECTED
+                }
+
+                println("Selected seat: ${selectedSeats}")
             }
 
             Spacer(modifier = Modifier.height(12.dp))
