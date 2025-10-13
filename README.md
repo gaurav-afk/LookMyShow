@@ -9,12 +9,6 @@ Movie Listings: Get details about movies currently running in theatres near you.
 
 Detailed Movie Info: View cast, crew, trailers, ratings, and synopsis for each movie.
 
-Search & Filter: Quickly find movies, genres, or theatres using smart search and filters.
-
-Favorites: Save your favorite movies to your watchlist for quick access later.
-
-Offline Mode: Previously viewed movies and details are stored locally using Room Database.
-
 Clean, Modern UI: Built using Jetpack Compose for a smooth and dynamic user experience.
 
 📸 Screenshots
