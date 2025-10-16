@@ -63,7 +63,7 @@ fun MovieItem(movie: Movie, onClick: () -> Unit) {
             modifier = Modifier
                 .wrapContentHeight()
                 .clickable{ onClick() }
-                .width(180.dp),
+                .width(175.dp),
             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
         ) {
             Column {
@@ -72,7 +72,7 @@ fun MovieItem(movie: Movie, onClick: () -> Unit) {
                     contentDescription = "Movie poster",
                     modifier = Modifier
                         .fillMaxWidth()
-                        .aspectRatio(0.7f),
+                        .aspectRatio(0.6f),
                     contentScale = ContentScale.Crop
                 )
                 Row(
@@ -118,8 +118,8 @@ fun MovieItem(movie: Movie, onClick: () -> Unit) {
                 fontWeight = FontWeight.Normal
             ),
             modifier = Modifier
-                .width(200.dp)
-                .padding(start = 4.dp, end = 4.dp, bottom = 8.dp, top = 0.dp)
+                .width(180.dp)
+                .padding(start = 4.dp, end = 4.dp, bottom = 8.dp)
         )
     }
 }

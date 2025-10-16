@@ -116,7 +116,7 @@ fun HallLayoutScreen(
                                 .padding(vertical = 12.dp)
                         ) {
                             Text(
-                                text = "Pay ${550 * selectedSeats.size}",
+                                text = "Pay ${390 * selectedSeats.size}",
                                 color = Color.White
                             )
                         }
