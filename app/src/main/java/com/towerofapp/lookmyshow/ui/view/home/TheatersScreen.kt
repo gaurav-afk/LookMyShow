@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -24,10 +23,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.towerofapp.lookmyshow.data.model.Theater
 import com.towerofapp.lookmyshow.ui.viewmodel.MoviesViewModel
-import com.google.accompanist.flowlayout.FlowRow
 import com.towerofapp.lookmyshow.data.model.Movie
-import java.net.URLEncoder
-import java.nio.charset.StandardCharsets
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -127,7 +123,7 @@ fun TheatreItem(theatre: Theater, navController: NavController, movie: Movie) {
                         .border(width = 1.dp, color = Color.Red, shape = CircleShape)
                         .clickable {
                             // Navigate to HallLayoutScreen
-                            val safeTime = time.replace(":", "-") // "09-00"
+                            val safeTime = time.replace(":", "-")
                             Log.d("NAV", "Navigating to: hall/${movie.id}/$safeTime")
                             val encodedTitle = java.net.URLEncoder.encode(movie.title, "UTF-8")
                             navController.navigate("hall/${movie.id}/$safeTime/$encodedTitle")
