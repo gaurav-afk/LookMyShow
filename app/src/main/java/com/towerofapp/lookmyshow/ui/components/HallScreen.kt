@@ -34,15 +34,15 @@ fun HallScreen() {
         Spacer(
             modifier = Modifier
                 .padding(bottom = 65.dp)
-                .width(screenWidth * 0.8f) // 80% of screen width
+                .width(screenWidth * 0.8f)
                 .height(8.dp)
-                .background(Color.Blue)
+                .background(Color(0XFF78d0ff))
                 .align(Alignment.BottomCenter),
         )
         Box(
             modifier = Modifier
                 .padding(bottom = 40.dp)
-                .width(screenWidth * 0.8f) // 80% of screen width
+                .width(screenWidth * 0.8f)
                 .height(25.dp)
                 .background(Color.Gray, shape = RoundedCornerShape(bottomEnd = 8.dp, bottomStart = 8.dp))
                 .align(Alignment.BottomCenter),

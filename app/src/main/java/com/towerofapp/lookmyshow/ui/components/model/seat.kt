@@ -14,5 +14,5 @@ data class Seat(
     val type: SeatType,
     val initialStatus: SeatStatus
 ) {
-    var status by mutableStateOf(initialStatus) // Make status observable
+    var status by mutableStateOf(initialStatus)
 }

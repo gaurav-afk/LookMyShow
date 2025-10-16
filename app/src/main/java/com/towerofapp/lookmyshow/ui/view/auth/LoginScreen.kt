@@ -29,18 +29,17 @@ fun LoginScreen(navController: NavController, viewModel: AuthViewModel = hiltVie
             Text("Create account")
         }
 
-        when(state) {
-            AuthViewModel.AuthState.Loading -> Text("Loading...")
+        when (state) {
+            AuthViewModel.AuthState.Loading  -> Text("Loading...")
             is AuthViewModel.AuthState.Error -> Text("Error: ${(state as AuthViewModel.AuthState.Error).message}")
-            AuthViewModel.AuthState.Success -> LaunchedEffect(state) {
+            AuthViewModel.AuthState.Success  -> LaunchedEffect(state) {
                 if (state is AuthViewModel.AuthState.Success) {
                     navController.navigate("home") {
                         popUpTo("login") { inclusive = true } // remove login/signup from back stack
                     }
                 }
             }
-
-            else -> {}
+            else                             -> {}
         }
     }
 }

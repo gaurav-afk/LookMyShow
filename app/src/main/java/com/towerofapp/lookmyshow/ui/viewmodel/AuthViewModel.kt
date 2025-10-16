@@ -63,7 +63,7 @@ class AuthViewModel @Inject constructor(
         if (isUserLoggedInUseCase()) _authState.value = AuthState.Success
     }
 
-    sealed class AuthState {
+     sealed class AuthState {
         object Idle : AuthState()
         object Loading : AuthState()
         object Success : AuthState()

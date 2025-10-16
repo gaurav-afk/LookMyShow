@@ -12,10 +12,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.towerofapp.lookmyshow.ui.components.model.HallLayout
 import com.towerofapp.lookmyshow.ui.components.model.Seat
 import com.towerofapp.lookmyshow.ui.components.model.SeatStatus
@@ -46,22 +49,29 @@ fun HallLayoutView(
 @Composable
 fun SeatView(seat: Seat, onClick: (Seat) -> Unit) {
     val color = when (seat.status) {
-        SeatStatus.AVAILABLE -> Color.Gray
-        SeatStatus.BOOKED -> Color.Red
-        SeatStatus.SELECTED -> Color.Blue
+        SeatStatus.AVAILABLE -> Color.LightGray
+        SeatStatus.BOOKED -> Color.Gray
+        SeatStatus.SELECTED -> Color.Green
     }
 
     Box(
         modifier = Modifier
             .size(32.dp)
             .padding(2.dp)
-            .background(color,
-                shape = RoundedCornerShape(2.dp))
+            .background(
+                color,
+                shape = RoundedCornerShape(4.dp)
+            )
             .clickable {
                 if (seat.status == SeatStatus.AVAILABLE || seat.status == SeatStatus.SELECTED) {
                     seat.status = SeatStatus.SELECTED
                     onClick(seat)
                 }
-            }
-    )
+            } ,
+        contentAlignment = Alignment.Center
+    ){
+        Text(
+            text="${seat.row}${seat.number}",
+            fontSize = 10.sp)
+    }
 }

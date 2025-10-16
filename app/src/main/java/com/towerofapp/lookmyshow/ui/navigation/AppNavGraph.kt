@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.towerofapp.lookmyshow.ui.view.auth.LoginScreen
 import com.towerofapp.lookmyshow.ui.view.auth.SignUpScreen
+import com.towerofapp.lookmyshow.ui.view.home.BookingScreen
 import com.towerofapp.lookmyshow.ui.view.home.HallLayoutScreen
 import com.towerofapp.lookmyshow.ui.view.home.HomeScreen
 import com.towerofapp.lookmyshow.ui.view.home.TheatersScreen
@@ -27,6 +28,11 @@ fun AppNavGraph(navController: NavHostController, startDestination: String) {
                 java.net.URLDecoder.decode(it, "UTF-8")
             } ?: ""
             HallLayoutScreen(navController = navController, movieId = movieId, timeSlot = timeSlot, movieTitle = movieTitle)
+        }
+        composable(route = "booking/{movieTitle}/{selectedSeats}"){backStackEntry ->
+            val movieTitle = backStackEntry.arguments?.getString("movieTitle") ?: ""
+            val seats = backStackEntry.arguments?.getString("selectedSeats")?.split(",") ?: emptyList()
+            BookingScreen(navController = navController, movieTitle=movieTitle, seats= seats)
         }
     }
 }

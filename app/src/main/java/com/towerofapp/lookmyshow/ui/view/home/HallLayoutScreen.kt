@@ -5,6 +5,7 @@ import android.R.attr.padding
 import android.R.attr.text
 import android.text.Layout
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.magnifier
@@ -40,10 +41,9 @@ fun HallLayoutScreen(
     movieTitle: String
 ) {
 
-    var selectedSeats by remember { mutableStateOf(setOf<Seat>()) }
+    var selectedSeats by remember { mutableStateOf(setOf<String>()) }
     val decodedTimeSlot = timeSlot.replace("-", ":")
 
-    // Sample hall layout
     val hallLayout = remember {
         HallLayout(
             rows = listOf("A", "B", "C", "D", "E"),
@@ -101,7 +101,10 @@ fun HallLayoutScreen(
                 ) {
                     Box(
                         modifier = Modifier
-                            .fillMaxSize(),
+                            .fillMaxSize()
+                            .clickable{
+                                navController.navigate("booking/$movieTitle/${selectedSeats.joinToString(",")}")
+                            },
                         contentAlignment = Alignment.Center
                     ) {
                         Row(
@@ -118,7 +121,6 @@ fun HallLayoutScreen(
                             )
                         }
                     }
-
                 }
             }
         }
@@ -139,27 +141,24 @@ fun HallLayoutScreen(
                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
             )
 
-
-
             HallLayoutView(
                 hallLayout = hallLayout,
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f),
             ) { seat ->
-                if (seat in selectedSeats){
-                    selectedSeats -= seat
+                var seatNumber = seat.row+seat.number.toString()
+                if (seatNumber in selectedSeats){
+                    selectedSeats -= seatNumber
                     seat.status = SeatStatus.AVAILABLE
-                }else{
-                    selectedSeats += seat
+                } else{
+                    selectedSeats += seatNumber
                     seat.status = SeatStatus.SELECTED
                 }
-
-                println("Selected seat: ${selectedSeats}")
+                println("Selected seat: ${selectedSeats.joinToString(",")}")
             }
 
             Spacer(modifier = Modifier.height(12.dp))
-
             HallScreen()
         }
     }

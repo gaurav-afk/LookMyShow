@@ -31,7 +31,7 @@ fun ProfileScreen(appNavController: NavController, authViewModel: AuthViewModel 
             Button(onClick = {
                 authViewModel.logout()
                 appNavController.navigate("login") {
-                    popUpTo("home") { inclusive = true } // clear home from back stack
+                    popUpTo("home") { inclusive = true }
                 }
             }) {
                 Text("Logout")

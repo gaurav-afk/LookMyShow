@@ -50,7 +50,6 @@ fun MoviesScreen(navController: NavController, viewModel: MoviesViewModel = hilt
     }
 }
 
-
 @Composable
 fun MovieList(
     movies: List<Movie>,

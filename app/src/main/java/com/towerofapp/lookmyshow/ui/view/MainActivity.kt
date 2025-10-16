@@ -36,12 +36,13 @@ class MainActivity : ComponentActivity() {
                                 popUpTo("login") { inclusive = true }
                             }
                         }
-                        AuthViewModel.AuthState.Idle -> {
+                        AuthViewModel.AuthState.Idle       -> {
                             navController.navigate("login") {
                                 popUpTo("home") { inclusive = true }
                             }
                         }
-                        else -> {}
+
+                        else                               -> {}
                     }
                 }
             }

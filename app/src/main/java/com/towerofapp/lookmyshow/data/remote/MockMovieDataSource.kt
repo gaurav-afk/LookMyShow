@@ -192,13 +192,13 @@ class MockMovieDataSource @Inject constructor(private val moshi: Moshi) {
 
     fun getMockMovies(): MovieListResponse? {
         val adapter = moshi.adapter(MovieListResponse::class.java)
-        Log.d("MockMovieDataSource", "Attempting to parse mock JSON") // Log
+        Log.d("MockMovieDataSource", "Attempting to parse mock JSON")
         return try {
             val parsed = adapter.fromJson(mockJsonResponse)
-            Log.d("MockMovieDataSource", "Parsed movies count: ${parsed?.movies?.size}") // Log
+            Log.d("MockMovieDataSource", "Parsed movies count: ${parsed?.movies?.size}")
             parsed
         } catch (e: Exception) {
-            Log.e("MockMovieDataSource", "Error parsing JSON", e) // Log error
+            Log.e("MockMovieDataSource", "Error parsing JSON", e)
             null
         }
     }
