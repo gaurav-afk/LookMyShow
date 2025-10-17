@@ -30,7 +30,6 @@ fun LoginScreen(navController: NavController, viewModel: AuthViewModel = hiltVie
 
     Column(
         modifier = Modifier
-            .statusBarsPadding()
             .pointerInput(Unit) {
                 detectTapGestures {
                     focusManager.clearFocus()

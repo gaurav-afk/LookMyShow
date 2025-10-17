@@ -25,7 +25,6 @@ fun SignUpScreen(navController: NavController, viewModel: AuthViewModel = hiltVi
 
     Column(
         modifier = Modifier
-            .statusBarsPadding()
             .pointerInput(Unit){
                 detectTapGestures {
                     focusManager.clearFocus()
