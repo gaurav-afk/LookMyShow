@@ -71,6 +71,7 @@ dependencies {
     implementation("androidx.compose.material3:material3:1.2.0")
 
     implementation("com.google.accompanist:accompanist-flowlayout:0.32.0")
+    implementation("androidx.core:core-splashscreen:1.0.1")
     implementation("androidx.compose.foundation:foundation:1.6.0")
     implementation("androidx.compose.material:material-icons-extended")
     implementation("androidx.compose.ui:ui:1.5.0")

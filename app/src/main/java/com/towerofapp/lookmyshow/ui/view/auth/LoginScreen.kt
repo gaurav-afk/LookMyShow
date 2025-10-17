@@ -4,6 +4,7 @@ import com.towerofapp.lookmyshow.ui.viewmodel.AuthViewModel
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -16,7 +17,12 @@ fun LoginScreen(navController: NavController, viewModel: AuthViewModel = hiltVie
 
     val state by viewModel.authState.collectAsState()
 
-    Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.Center) {
+    Column(modifier = Modifier
+        .padding(16.dp)
+        .statusBarsPadding()
+        .fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally) {
         TextField(value = email, onValueChange = { email = it }, label = { Text("Email") })
         Spacer(modifier = Modifier.height(8.dp))
         TextField(value = password, onValueChange = { password = it }, label = { Text("Password") })
