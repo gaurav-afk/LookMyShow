@@ -1,10 +1,16 @@
 package com.towerofapp.lookmyshow.ui.view.auth
 
+import androidx.compose.foundation.gestures.detectTapGestures
 import com.towerofapp.lookmyshow.ui.viewmodel.AuthViewModel
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -13,33 +19,61 @@ import androidx.navigation.NavController
 fun SignUpScreen(navController: NavController, viewModel: AuthViewModel = hiltViewModel()) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-
+    val focusManager = LocalFocusManager.current
     val state by viewModel.authState.collectAsState()
 
-    Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.Center) {
+    Column(
+        modifier = Modifier
+            .padding(16.dp)
+            .statusBarsPadding()
+            .pointerInput(Unit){
+                detectTapGestures {
+                    focusManager.clearFocus()
+                }
+            }
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         TextField(value = email, onValueChange = { email = it }, label = { Text("Email") })
         Spacer(modifier = Modifier.height(8.dp))
         TextField(value = password, onValueChange = { password = it }, label = { Text("Password") })
         Spacer(modifier = Modifier.height(16.dp))
-        Button(onClick = { viewModel.signUp(email, password) }) {
-            Text("Sign Up")
-        }
+        SignUpButton(viewModel = viewModel, email = email, password = password)
         Spacer(modifier = Modifier.height(8.dp))
         TextButton(onClick = { navController.navigate("login") }) {
-            Text("Already have an account?")
+            Text("Already have an account?", color = Color.White)
         }
 
-        when(state) {
-            AuthViewModel.AuthState.Loading -> Text("Loading...")
+        when (state) {
+            AuthViewModel.AuthState.Loading  -> CircularProgressIndicator(color = Color.Red)
             is AuthViewModel.AuthState.Error -> Text("Error: ${(state as AuthViewModel.AuthState.Error).message}")
-            AuthViewModel.AuthState.Success -> LaunchedEffect(Unit) {
+            AuthViewModel.AuthState.Success  -> LaunchedEffect(Unit) {
                 if (state is AuthViewModel.AuthState.Success) {
                     navController.navigate("home") {
                         popUpTo("login") { inclusive = true }
                     }
                 }
             }
-            else -> {}
+
+            else                             -> {}
         }
+    }
+}
+
+@Composable
+fun SignUpButton(viewModel: AuthViewModel, email: String, password: String) {
+    Button(
+        onClick = { viewModel.signUp(email, password) },
+        modifier = Modifier
+            .width(280.dp)
+            .height(60.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color(0xFF790000),
+            contentColor = Color.White
+        ),
+        shape = RoundedCornerShape(12.dp)
+    ) {
+        Text("Sign Up")
     }
 }

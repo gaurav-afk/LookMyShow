@@ -49,7 +49,9 @@ fun TheatersScreen(
             colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Red)
         )
 
-        Box(modifier = Modifier.fillMaxSize()) {
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .background(color = Color.White)) {
             when (val state = uiState) {
                 is MoviesViewModel.MoviesUiState.Success -> {
                     val movie = state.movies.find { it.id == movieId }
