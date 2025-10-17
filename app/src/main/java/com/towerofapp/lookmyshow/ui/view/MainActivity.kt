@@ -12,11 +12,13 @@ import com.towerofapp.lookmyshow.ui.viewmodel.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         setContent {
             LookMyShowTheme(darkTheme = false) {
                 val navController = rememberNavController()

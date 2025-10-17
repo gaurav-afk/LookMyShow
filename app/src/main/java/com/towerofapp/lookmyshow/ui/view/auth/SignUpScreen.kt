@@ -1,5 +1,6 @@
 package com.towerofapp.lookmyshow.ui.view.auth
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
 import com.towerofapp.lookmyshow.ui.viewmodel.AuthViewModel
 import androidx.compose.foundation.layout.*
@@ -24,14 +25,14 @@ fun SignUpScreen(navController: NavController, viewModel: AuthViewModel = hiltVi
 
     Column(
         modifier = Modifier
-            .padding(16.dp)
             .statusBarsPadding()
             .pointerInput(Unit){
                 detectTapGestures {
                     focusManager.clearFocus()
                 }
             }
-            .fillMaxSize(),
+            .fillMaxSize()
+            .background(color = Color(0xFFFFC00C0C)),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -55,7 +56,6 @@ fun SignUpScreen(navController: NavController, viewModel: AuthViewModel = hiltVi
                     }
                 }
             }
-
             else                             -> {}
         }
     }

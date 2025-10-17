@@ -30,14 +30,14 @@ fun LoginScreen(navController: NavController, viewModel: AuthViewModel = hiltVie
 
     Column(
         modifier = Modifier
-            .padding(16.dp)
             .statusBarsPadding()
             .pointerInput(Unit) {
                 detectTapGestures {
                     focusManager.clearFocus()
                 }
             }
-            .fillMaxSize(),
+            .fillMaxSize()
+            .background(color = Color(0xFFFFC00C0C)),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally) {
         TextField(
