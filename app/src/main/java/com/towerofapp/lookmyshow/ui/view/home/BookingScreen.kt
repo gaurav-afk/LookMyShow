@@ -2,6 +2,7 @@ package com.towerofapp.lookmyshow.ui.view.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,12 +35,14 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.towerofapp.lookmyshow.data.model.Theater
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BookingScreen(
     navController: NavController,
     movieTitle: String,
+    theater: String,
     seats: List<String>
 ) {
     Scaffold(
@@ -76,7 +79,10 @@ fun BookingScreen(
                             .fillMaxWidth(0.8f)
                             .clip(RoundedCornerShape(6.dp))
                             .background(color = Color.Red)
-                            .padding(vertical = 8.dp),
+                            .padding(vertical = 8.dp)
+                            .clickable {
+                                navController.navigate("success/$movieTitle/${seats.joinToString(",")}/$theater/${390 * seats.size}")
+                            },
                         contentAlignment = Alignment.Center
                     ) {
                         Text(

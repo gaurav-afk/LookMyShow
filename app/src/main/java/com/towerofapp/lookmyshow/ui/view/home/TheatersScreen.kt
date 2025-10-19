@@ -128,7 +128,7 @@ fun TheatreItem(theatre: Theater, navController: NavController, movie: Movie) {
                             val safeTime = time.replace(":", "-")
                             Log.d("NAV", "Navigating to: hall/${movie.id}/$safeTime")
                             val encodedTitle = java.net.URLEncoder.encode(movie.title, "UTF-8")
-                            navController.navigate("hall/${movie.id}/$safeTime/$encodedTitle")
+                            navController.navigate("hall/${movie.id}/$safeTime/$encodedTitle/${theatre.name}")
                         }
                         .padding(horizontal = 8.dp, vertical = 4.dp)
                 ) {

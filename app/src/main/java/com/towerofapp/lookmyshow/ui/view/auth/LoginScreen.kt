@@ -2,6 +2,7 @@ package com.towerofapp.lookmyshow.ui.view.auth
 
 import android.R.attr.maxWidth
 import android.R.attr.password
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
 import com.towerofapp.lookmyshow.ui.viewmodel.AuthViewModel
@@ -58,17 +59,18 @@ fun LoginScreen(navController: NavController, viewModel: AuthViewModel = hiltVie
             Text("Create account", color = Color.White)
         }
 
+        Log.d("loginScreen state:", state.toString())
+
         when (state) {
-            AuthViewModel.AuthState.Loading -> CircularProgressIndicator(color = Color.Red)
+            is AuthViewModel.AuthState.Loading -> CircularProgressIndicator(color = Color.Red)
             is AuthViewModel.AuthState.Error -> Text("Error: ${(state as AuthViewModel.AuthState.Error).message}")
-            AuthViewModel.AuthState.Success -> LaunchedEffect(state) {
+            is AuthViewModel.AuthState.Success -> LaunchedEffect(state) {
                 if (state is AuthViewModel.AuthState.Success) {
                     navController.navigate("home") {
                         popUpTo("login") { inclusive = true } // remove login/signup from back stack
                     }
                 }
             }
-
             else -> {}
         }
     }

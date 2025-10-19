@@ -37,6 +37,7 @@ import java.net.URLDecoder
 fun HallLayoutScreen(
     navController: NavController,
     movieId: String,
+    theater: String,
     timeSlot: String,
     movieTitle: String
 ) {
@@ -103,7 +104,7 @@ fun HallLayoutScreen(
                         modifier = Modifier
                             .fillMaxSize()
                             .clickable{
-                                navController.navigate("booking/$movieTitle/${selectedSeats.joinToString(",")}")
+                                navController.navigate("booking/$movieTitle/${selectedSeats.joinToString(",")}/$theater")
                             },
                         contentAlignment = Alignment.Center
                     ) {

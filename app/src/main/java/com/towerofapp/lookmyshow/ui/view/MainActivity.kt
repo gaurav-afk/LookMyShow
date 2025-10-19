@@ -3,6 +3,7 @@ package com.towerofapp.lookmyshow.ui.view
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
@@ -24,13 +25,10 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 val authViewModel: AuthViewModel = hiltViewModel()
                 val state by authViewModel.authState.collectAsState()
-
                 LaunchedEffect(Unit) {
                     authViewModel.checkUser()
                 }
-
                 AppNavGraph(navController = navController, startDestination = "login")
-
                 LaunchedEffect(state) {
                     when (state) {
                         is AuthViewModel.AuthState.Success -> {
@@ -51,4 +49,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
