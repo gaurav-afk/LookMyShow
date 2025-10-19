@@ -47,6 +47,7 @@ android {
 }
 
 dependencies {
+    val room_version = "2.8.2"
 
     // Hilt
     implementation("com.google.dagger:hilt-android:2.56.2")
@@ -57,9 +58,15 @@ dependencies {
     implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.play.services.maps)
     implementation(libs.androidx.compose.foundation.layout)
+
     kapt("com.google.dagger:hilt-compiler:2.56.2")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     implementation("io.coil-kt:coil-compose:2.4.0")
+
+    // roomDb
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
 
     // MapLibre SDK
     implementation("org.maplibre.gl:android-sdk:11.13.5")

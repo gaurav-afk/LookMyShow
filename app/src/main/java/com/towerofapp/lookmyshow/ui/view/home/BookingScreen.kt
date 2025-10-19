@@ -28,23 +28,32 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.towerofapp.lookmyshow.data.model.BookedTicket
 import com.towerofapp.lookmyshow.data.model.Theater
+import com.towerofapp.lookmyshow.ui.viewmodel.BookedTicketViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BookingScreen(
+    viewModel: BookedTicketViewModel = hiltViewModel(),
     navController: NavController,
     movieTitle: String,
     theater: String,
     seats: List<String>
 ) {
+    val coroutineScope = rememberCoroutineScope()
     Scaffold(
         topBar = {
             TopAppBar(
@@ -81,6 +90,9 @@ fun BookingScreen(
                             .background(color = Color.Red)
                             .padding(vertical = 8.dp)
                             .clickable {
+                                coroutineScope.launch {
+                                    viewModel.saveBookedTicket(BookedTicket(movieTitle = movieTitle, theater = theater, bookedSeats = seats.joinToString(separator = ","), price = (390 * seats.size).toString()))
+                                }
                                 navController.navigate("success/$movieTitle/${seats.joinToString(",")}/$theater/${390 * seats.size}")
                             },
                         contentAlignment = Alignment.Center

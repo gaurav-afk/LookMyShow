@@ -1,8 +1,10 @@
 package com.towerofapp.lookmyshow.data.di
 
 import com.towerofapp.lookmyshow.data.repository.AuthRepositoryImpl
+import com.towerofapp.lookmyshow.data.repository.BookedTicketRepositoryImpl
 import com.towerofapp.lookmyshow.data.repository.MovieRepositoryImpl
 import com.towerofapp.lookmyshow.domain.repository.AuthRepository
+import com.towerofapp.lookmyshow.domain.repository.BookedTicketRepository
 import com.towerofapp.lookmyshow.domain.repository.MovieRepository
 import dagger.Binds
 import dagger.Module
@@ -24,4 +26,7 @@ abstract class RepositoryModule {
     @Singleton
     abstract fun bindMovieRepository(impl: MovieRepositoryImpl): MovieRepository
 
+    @Binds
+    @Singleton
+    abstract fun bindBookedTicketRepository(impl: BookedTicketRepositoryImpl): BookedTicketRepository
 }

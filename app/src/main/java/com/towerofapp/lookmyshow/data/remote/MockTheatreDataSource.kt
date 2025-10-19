@@ -144,13 +144,13 @@ class MockTheatreDataSource @Inject constructor(private val moshi: Moshi) {
 
     fun getMockTheaters(): TheaterListResponse? {
         val adapter = moshi.adapter(TheaterListResponse::class.java)
-        Log.d("MockTheaterDataSource", "Attempting to parse mock theatre JSON") // Log
+        Log.d("MockTheaterDataSource", "Attempting to parse mock theatre JSON")
         return try {
-            val parsed = adapter.fromJson(mockJsonResponse) // your theatre JSON string
-            Log.d("MockTheaterDataSource", "Parsed theaters count: ${parsed?.theaters?.size}") // Log
+            val parsed = adapter.fromJson(mockJsonResponse)
+            Log.d("MockTheaterDataSource", "Parsed theaters count: ${parsed?.theaters?.size}")
             parsed
         } catch (e: Exception) {
-            Log.e("MockTheaterDataSource", "Error parsing theatre JSON", e) // Log error
+            Log.e("MockTheaterDataSource", "Error parsing theatre JSON", e)
             null
         }
     }
