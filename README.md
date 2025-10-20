@@ -19,7 +19,7 @@ Users can browse and book movies, and see theatre locations on interactive maps.
 
 ## Features
 - **Firebase Authentication**: Secure login/signup with email/password and session management.  
-- **Movie Listings**: Browse movies currently running in nearby theatres.  
+- **Movie Listings**: Browse movies running in nearby theatres.  
 - **Interactive Maps**: Integrated with **OSM + MapTiler** to display theatre locations.  
 - **Clean Architecture**: Built using **MVVM + Clean Architecture** principles for scalable and maintainable code.  
 - **Modern Tech Stack**:  
