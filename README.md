@@ -48,4 +48,3 @@ Users can browse and book movies, and see theatre locations on interactive maps.
 git clone https://github.com/gaurav-afk/LookMyShow.git
 cd LookMyShow
 
-
