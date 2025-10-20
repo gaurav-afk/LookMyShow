@@ -4,12 +4,15 @@ Welcome to LookMyShow — your go-to Android app for discovering the latest movi
 The app provides real-time listings, detailed movie information, showtimes, and booking integration — all wrapped in a modern and smooth Android experience.
 
 ✨ Features
-
-Movie Listings: Get details about movies currently running in theatres near you.
-
-Detailed Movie Info: View cast, crew, trailers, ratings, and synopsis for each movie.
-
-Clean, Modern UI: Built using Jetpack Compose for a smooth and dynamic user experience.
+1. 🔒 Firebase Authentication: Secure login/signup with email/password and session management.
+2. 🎞️ Movie Listings: Discover movies currently running in nearby theatres.
+3. 🧭 Interactive Maps: Integrated with OSM + MapTiler to display theatres.
+4. 🧱 Clean Architecture: Built using MVVM + Clean Architecture principles.
+5. ⚙️ Modern Tech Stack:
+    * Kotlin, Jetpack Compose for UI
+    * Coroutines & Flow for async and reactive data handling
+    * Hilt for dependency injection
+    * ViewModel for lifecycle-aware state management
 
 📸 Screenshots
 
