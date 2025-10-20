@@ -39,7 +39,7 @@ Users can browse and book movies, and see theatre locations on interactive maps.
 - **Coil** for image loading  
 - **Coroutines** for asynchronous tasks  
 - **ViewModel** for lifecycle-aware state management  
-- **Room** to store bookedTickets
+- **RoomDB** to store bookedTickets
 
 ## Getting Started
 
