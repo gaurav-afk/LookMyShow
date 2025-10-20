@@ -1,8 +1,6 @@
 package com.towerofapp.lookmyshow.ui.view.home
 
-import android.graphics.drawable.Icon
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,8 +12,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -26,9 +22,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.google.android.play.integrity.internal.s
-import com.towerofapp.lookmyshow.ui.components.model.Seat
-import org.maplibre.android.style.layers.PropertyFactory.backgroundColor
 import kotlin.collections.joinToString
 
 @Composable
@@ -47,8 +40,6 @@ fun BookingSuccessScreen(
         contentAlignment = Alignment.Center
     ) {
         Column(
-//            modifier = Modifier
-//                .background(Color.Red),
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
