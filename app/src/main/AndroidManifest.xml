@@ -18,7 +18,7 @@
             android:name="com.mapbox.maps.token"
             android:value="pk.ey..." />
         <activity
-            android:name=".ui.view.MainActivity"
+            android:name=".ui.screen.MainActivity"
             android:theme="@style/Theme.LookMyShow.Splash"
             android:exported="true">
             <intent-filter>
@@ -27,5 +27,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

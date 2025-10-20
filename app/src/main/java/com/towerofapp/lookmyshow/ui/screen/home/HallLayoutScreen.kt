@@ -1,14 +1,9 @@
-package com.towerofapp.lookmyshow.ui.view.home
+package com.towerofapp.lookmyshow.ui.screen.home
 
-import android.R.attr.navigationIcon
-import android.R.attr.padding
-import android.R.attr.text
-import android.text.Layout
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.magnifier
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -18,25 +13,22 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.towerofapp.lookmyshow.core.AppConfig
 import com.towerofapp.lookmyshow.ui.components.HallLayoutView
 import com.towerofapp.lookmyshow.ui.components.HallScreen
 import com.towerofapp.lookmyshow.ui.components.model.HallLayout
 import com.towerofapp.lookmyshow.ui.components.model.Seat
 import com.towerofapp.lookmyshow.ui.components.model.SeatStatus
 import com.towerofapp.lookmyshow.ui.components.model.SeatType
-import org.intellij.lang.annotations.JdkConstants
-import java.net.URLDecoder
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HallLayoutScreen(
     navController: NavController,
-    movieId: String,
     theater: String,
     timeSlot: String,
     movieTitle: String
@@ -117,7 +109,7 @@ fun HallLayoutScreen(
                                 .padding(vertical = 12.dp)
                         ) {
                             Text(
-                                text = "Pay ${390 * selectedSeats.size}",
+                                text = "Pay ${AppConfig.ticketPrice * selectedSeats.size}",
                                 color = Color.White
                             )
                         }

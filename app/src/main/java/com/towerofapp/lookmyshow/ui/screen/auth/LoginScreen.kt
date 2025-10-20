@@ -1,7 +1,5 @@
-package com.towerofapp.lookmyshow.ui.view.auth
+package com.towerofapp.lookmyshow.ui.screen.auth
 
-import android.R.attr.maxWidth
-import android.R.attr.password
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -18,9 +16,7 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.towerofapp.lookmyshow.ui.viewmodel.MoviesViewModel
 
 @Composable
 fun LoginScreen(navController: NavController, viewModel: AuthViewModel = hiltViewModel()) {

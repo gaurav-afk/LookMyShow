@@ -1,9 +1,8 @@
-package com.towerofapp.lookmyshow.ui.view
+package com.towerofapp.lookmyshow.ui.screen
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController

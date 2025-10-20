@@ -1,4 +1,4 @@
-package com.towerofapp.lookmyshow.ui.view.home
+package com.towerofapp.lookmyshow.ui.screen.home
 
 
 import android.os.Bundle

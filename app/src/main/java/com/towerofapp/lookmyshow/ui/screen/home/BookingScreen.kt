@@ -1,4 +1,4 @@
-package com.towerofapp.lookmyshow.ui.view.home
+package com.towerofapp.lookmyshow.ui.screen.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -37,11 +37,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.towerofapp.lookmyshow.core.AppConfig
 import com.towerofapp.lookmyshow.data.model.BookedTicket
-import com.towerofapp.lookmyshow.data.model.Theater
 import com.towerofapp.lookmyshow.ui.viewmodel.BookedTicketViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -91,9 +89,9 @@ fun BookingScreen(
                             .padding(vertical = 8.dp)
                             .clickable {
                                 coroutineScope.launch {
-                                    viewModel.saveBookedTicket(BookedTicket(movieTitle = movieTitle, theater = theater, bookedSeats = seats.joinToString(separator = ","), price = (390 * seats.size).toString()))
+                                    viewModel.saveBookedTicket(BookedTicket(movieTitle = movieTitle, theater = theater, bookedSeats = seats.joinToString(separator = ","), price = (AppConfig.ticketPrice * seats.size).toString()))
                                 }
-                                navController.navigate("success/$movieTitle/${seats.joinToString(",")}/$theater/${390 * seats.size}")
+                                navController.navigate("success/$movieTitle/${seats.joinToString(",")}/$theater/${AppConfig.ticketPrice * seats.size + AppConfig.convenienceFee}")
                             },
                         contentAlignment = Alignment.Center
                     ) {
@@ -170,8 +168,8 @@ fun TicketCard(padding: PaddingValues,
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text("Ticket (₹390 × ${seats.size})", color = Color.White)
-                    Text("₹${390 * seats.size}", color = Color.White)
+                    Text("Ticket (₹${AppConfig.ticketPrice} × ${seats.size})", color = Color.White)
+                    Text("₹${AppConfig.ticketPrice * seats.size}", color = Color.White)
                 }
 
                 Row(
@@ -179,7 +177,7 @@ fun TicketCard(padding: PaddingValues,
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text("Convenience Fee", color = Color.White)
-                    Text("₹${if (seats.isNotEmpty()) 90 else 0}", color = Color.White)
+                    Text("₹${if (seats.isNotEmpty()) AppConfig.convenienceFee else 0}", color = Color.White)
                 }
 
                 Row(
@@ -190,7 +188,7 @@ fun TicketCard(padding: PaddingValues,
                 ) {
                     Text("Total", style = MaterialTheme.typography.titleMedium, color = Color.White)
                     Text(
-                        text = "₹${390 * seats.size + 90}",
+                        text = "₹${AppConfig.ticketPrice * seats.size + AppConfig.convenienceFee}",
                         style = MaterialTheme.typography.titleMedium,
                         color = Color.Green
                     )

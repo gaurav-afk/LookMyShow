@@ -1,4 +1,4 @@
-package com.towerofapp.lookmyshow.ui.view.home
+package com.towerofapp.lookmyshow.ui.screen.home
 
 import android.util.Log
 import androidx.compose.foundation.background

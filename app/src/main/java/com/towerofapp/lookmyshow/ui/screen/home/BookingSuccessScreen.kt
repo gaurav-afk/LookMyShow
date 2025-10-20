@@ -1,4 +1,4 @@
-package com.towerofapp.lookmyshow.ui.view.home
+package com.towerofapp.lookmyshow.ui.screen.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -30,7 +30,7 @@ fun BookingSuccessScreen(
     movieTitle: String,
     theater: String,
     bookedSeats: List<String>,
-    price: String
+    totalPrice: String
 ) {
     Box(
         modifier = Modifier
@@ -78,7 +78,7 @@ fun BookingSuccessScreen(
                 color = Color.Gray
             )
             Text(
-                text = "Paid: ₹${price}",
+                text = "Paid: ₹${totalPrice}",
                 style = MaterialTheme.typography.bodyMedium,
                 color = Color.Gray
             )

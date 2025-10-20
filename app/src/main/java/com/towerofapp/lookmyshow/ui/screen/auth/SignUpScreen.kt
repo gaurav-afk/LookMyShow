@@ -1,4 +1,4 @@
-package com.towerofapp.lookmyshow.ui.view.auth
+package com.towerofapp.lookmyshow.ui.screen.auth
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures

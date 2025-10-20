@@ -2,7 +2,6 @@ package com.towerofapp.lookmyshow.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import coil.util.CoilUtils.result
 import com.towerofapp.lookmyshow.domain.usecase.IsUserLoggedInUseCase
 import com.towerofapp.lookmyshow.domain.usecase.LoginUseCase
 import com.towerofapp.lookmyshow.domain.usecase.LogoutUseCase
@@ -69,5 +68,4 @@ class AuthViewModel @Inject constructor(
         object Success : AuthState()
         data class Error(val message: String?) : AuthState()
     }
-
 }

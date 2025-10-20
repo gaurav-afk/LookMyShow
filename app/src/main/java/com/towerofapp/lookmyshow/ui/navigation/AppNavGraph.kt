@@ -4,13 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.towerofapp.lookmyshow.ui.view.auth.LoginScreen
-import com.towerofapp.lookmyshow.ui.view.auth.SignUpScreen
-import com.towerofapp.lookmyshow.ui.view.home.BookingScreen
-import com.towerofapp.lookmyshow.ui.view.home.BookingSuccessScreen
-import com.towerofapp.lookmyshow.ui.view.home.HallLayoutScreen
-import com.towerofapp.lookmyshow.ui.view.home.HomeScreen
-import com.towerofapp.lookmyshow.ui.view.home.TheatersScreen
+import com.towerofapp.lookmyshow.ui.screen.auth.LoginScreen
+import com.towerofapp.lookmyshow.ui.screen.auth.SignUpScreen
+import com.towerofapp.lookmyshow.ui.screen.home.BookingScreen
+import com.towerofapp.lookmyshow.ui.screen.home.BookingSuccessScreen
+import com.towerofapp.lookmyshow.ui.screen.home.HallLayoutScreen
+import com.towerofapp.lookmyshow.ui.screen.home.HomeScreen
+import com.towerofapp.lookmyshow.ui.screen.home.TheatersScreen
 
 @Composable
 fun AppNavGraph(navController: NavHostController, startDestination: String) {
@@ -29,7 +29,7 @@ fun AppNavGraph(navController: NavHostController, startDestination: String) {
             val movieTitle = backStackEntry.arguments?.getString("movieTitle")?.let {
                 java.net.URLDecoder.decode(it, "UTF-8")
             } ?: ""
-            HallLayoutScreen(navController = navController, movieId = movieId, timeSlot = timeSlot, movieTitle = movieTitle, theater = theater)
+            HallLayoutScreen(navController = navController, timeSlot = timeSlot, movieTitle = movieTitle, theater = theater)
         }
         composable(route = "booking/{movieTitle}/{selectedSeats}/{theater}"){backStackEntry ->
             val movieTitle = backStackEntry.arguments?.getString("movieTitle") ?: ""
@@ -42,7 +42,7 @@ fun AppNavGraph(navController: NavHostController, startDestination: String) {
             val theater = backStackEntry.arguments?.getString("theater") ?: "N/A"
             val seats = backStackEntry.arguments?.getString("selectedSeats")?.split(",") ?: emptyList()
             val price = backStackEntry.arguments?.getString("price") ?: "N/A"
-            BookingSuccessScreen(navController = navController, movieTitle= movieTitle, bookedSeats = seats, theater = theater, price = price)
+            BookingSuccessScreen(navController = navController, movieTitle= movieTitle, bookedSeats = seats, theater = theater, totalPrice = price)
         }
     }
 }
