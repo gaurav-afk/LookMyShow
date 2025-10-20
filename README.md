@@ -43,7 +43,7 @@ Users can browse movies, view trailers, check cast and ratings, and see theatre 
 
 ### Clone the repository
 ```bash
-git clone https://github.com/yourusername/LookMyShow.git
+git clone https://github.com/gaurav-afk/LookMyShow.git
 cd LookMyShow
 
 
