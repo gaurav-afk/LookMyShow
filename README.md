@@ -25,3 +25,35 @@ The app provides real-time listings, detailed movie information, showtimes, and 
 <img width="200" height="400" alt="Screenshot_20251020_173519" src="https://github.com/user-attachments/assets/a317f398-d10c-41f3-8e08-ece56461530e" />
 <img width="200" height="400" alt="Screenshot_20251020_173525" src="https://github.com/user-attachments/assets/d8156718-6886-4f8a-be04-b4c0d2a4e060" />
 <img width="200" height="400" alt="Screenshot_20251020_173617" src="https://github.com/user-attachments/assets/fa830724-7328-41e5-a7e9-6ac69659aa3c" />
+
+
+🚀 Getting Started
+
+Clone the repository:
+
+git clone https://github.com/yourusername/LookMyShow.git
+
+
+Open in Android Studio.
+
+Build and run on an emulator or device.
+
+Add your own Firebase configuration in google-services.json.
+
+🛠️ Tech Stack
+
+Language: Kotlin
+
+UI: Jetpack Compose
+
+Architecture: MVVM + Clean Architecture
+
+State Management: ViewModel + Flow
+
+Dependency Injection: Hilt
+
+Authentication: Firebase Auth
+
+Maps: OSM + MapTiler
+
+Asynchronous Tasks: Coroutines
