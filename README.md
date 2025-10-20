@@ -33,11 +33,13 @@ Users can browse and book movies, and see theatre locations on interactive maps.
 - Internet connection for signup and login.
 
 ## Libraries & Tools
-- Jetpack Compose for UI.  
-- Firebase Authentication.  
-- OSM + MapTiler for maps.  
-- Coil for image loading.
-- Asynchronous Tasks: Coroutines
+- **Jetpack Compose** for UI  
+- **Firebase Authentication** for login/signup  
+- **OSM + MapTiler** for maps  
+- **Coil** for image loading  
+- **Coroutines** for asynchronous tasks  
+- **ViewModel** for lifecycle-aware state management  
+- **Room** to store bookedTickets
 
 ## Getting Started
 
