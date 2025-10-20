@@ -18,3 +18,11 @@ Clean, Modern UI: Built using Jetpack Compose for a smooth and dynamic user expe
 <img width="200" height="400" alt="Screenshot_20251013_170951" src="https://github.com/user-attachments/assets/e1253620-8648-4c03-9930-605599512f1b" />
 <img width="200" height="400" alt="Screenshot_20251013_171002" src="https://github.com/user-attachments/assets/290cef94-92f5-44ad-b456-c7a492faa0db" />
 <img width="200" height="400" alt="Screenshot_20251013_171025" src="https://github.com/user-attachments/assets/6420a812-dbae-441e-bffa-25cae39b9127" />
+
+
+<img width="200" height="400" alt="Screenshot_20251020_173511" src="https://github.com/user-attachments/assets/c5a6a94b-980c-4018-a1e4-dc0f0a098894" />
+<img width="200" height="400" alt="Screenshot_20251020_173623" src="https://github.com/user-attachments/assets/2c204504-ba9b-436b-9cda-e5fe2b8d7596" />
+<img width="200" height="400" alt="Screenshot_20251020_173502" src="https://github.com/user-attachments/assets/ee30cae7-2fde-44da-8279-9e9500bb66e8" />
+<img width="200" height="400" alt="Screenshot_20251020_173519" src="https://github.com/user-attachments/assets/a317f398-d10c-41f3-8e08-ece56461530e" />
+<img width="200" height="400" alt="Screenshot_20251020_173525" src="https://github.com/user-attachments/assets/d8156718-6886-4f8a-be04-b4c0d2a4e060" />
+<img width="200" height="400" alt="Screenshot_20251020_173617" src="https://github.com/user-attachments/assets/fa830724-7328-41e5-a7e9-6ac69659aa3c" />
