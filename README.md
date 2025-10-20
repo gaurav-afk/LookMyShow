@@ -16,6 +16,7 @@ The app provides real-time listings, detailed movie information, showtimes, and 
 
 📸 Screenshots
 
+<img width="200" height="400" alt="Screenshot_20251020_173701" src="https://github.com/user-attachments/assets/c03fb430-6efc-4e77-a3b1-3a1216f56769" />
 <img width="200" height="400" alt="Screenshot_20251020_173623" src="https://github.com/user-attachments/assets/2c204504-ba9b-436b-9cda-e5fe2b8d7596" />
 <img width="200" height="400" alt="Screenshot_20251013_170936" src="https://github.com/user-attachments/assets/f61061b7-e6a9-445a-8ce4-a73f18380fac" />
 <img width="200" height="400" alt="Screenshot_20251013_170945" src="https://github.com/user-attachments/assets/66dca366-a564-43be-8838-ae693dcf2ff3" />
