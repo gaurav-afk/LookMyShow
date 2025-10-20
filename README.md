@@ -30,7 +30,7 @@ Users can browse and book movies, and see theatre locations on interactive maps.
 
 ## Requirements
 - Android SDK version 35 or higher.  
-- Internet connection for fetching movie data and map tiles.  
+- Internet connection for signup and login.
 
 ## Libraries & Tools
 - Jetpack Compose for UI.  
