@@ -1,4 +1,4 @@
-🎬 LookMyShow (IN-PROGRESS)
+## 🎬 LookMyShow (IN-PROGRESS)
 
 Welcome to LookMyShow — your go-to Android app for discovering the latest movies, shows, and events around you!
 The app provides real-time listings, detailed movie information, showtimes, and booking integration — all wrapped in a modern and smooth Android experience.
