@@ -1,50 +1,11 @@
-## 🎬 LookMyShow (IN-PROGRESS)
+# 🎬 LookMyShow (IN-PROGRESS)
 
-Welcome to LookMyShow — your go-to Android app for discovering the latest movies, shows, and events around you!
-The app provides real-time listings, detailed movie information, showtimes, and booking integration — all wrapped in a modern and smooth Android experience.
+## Overview
+LookMyShow is an Android app designed to help users discover the latest movies, shows, and events nearby. The app provides **real-time listings**, detailed movie information, showtimes, and booking integration — all in a modern, smooth, and intuitive interface.  
 
-✨ Features
-1. 🔒 Firebase Authentication: Secure login/signup with email/password and session management.
-2. 🎞️ Movie Listings: Discover movies currently running in nearby theatres.
-3. 🧭 Interactive Maps: Integrated with OSM + MapTiler to display theatres.
-4. 🧱 Clean Architecture: Built using MVVM + Clean Architecture principles.
-5. ⚙️ Modern Tech Stack:
-    * Kotlin, Jetpack Compose for UI
-    * Coroutines & Flow for async and reactive data handling
-    * Hilt for dependency injection
-    * ViewModel for lifecycle-aware state management
+Users can browse movies, view trailers, check cast and ratings, and see theatre locations on interactive maps. The app is built using **MVVM + Clean Architecture**, **Jetpack Compose**, and modern Android development practices.
 
-
-## 🚀 Getting Started
-
-Clone the repository:
-
-git clone https://github.com/yourusername/LookMyShow.git
-
-
-Open in Android Studio.
-
-Build and run on an emulator or device.
-
-Add your own Firebase configuration in google-services.json.
-
-🛠️ Tech Stack
-
-Language: Kotlin
-
-UI: Jetpack Compose
-
-Architecture: MVVM + Clean Architecture
-
-State Management: ViewModel + Flow
-
-Dependency Injection: Hilt
-
-Authentication: Firebase Auth
-
-
-📸 Screenshots
-
+## Screenshots
 <img width="200" height="400" alt="Screenshot_20251020_173701" src="https://github.com/user-attachments/assets/c03fb430-6efc-4e77-a3b1-3a1216f56769" />
 <img width="200" height="400" alt="Screenshot_20251020_173623" src="https://github.com/user-attachments/assets/2c204504-ba9b-436b-9cda-e5fe2b8d7596" />
 <img width="200" height="400" alt="Screenshot_20251013_170936" src="https://github.com/user-attachments/assets/f61061b7-e6a9-445a-8ce4-a73f18380fac" />
@@ -56,7 +17,33 @@ Authentication: Firebase Auth
 <img width="200" height="400" alt="Screenshot_20251020_173617" src="https://github.com/user-attachments/assets/fa830724-7328-41e5-a7e9-6ac69659aa3c" />
 
 
+## Features
+- **Firebase Authentication**: Secure login/signup with email/password and session management.  
+- **Movie Listings**: Browse movies currently running in nearby theatres.  
+- **Interactive Maps**: Integrated with **OSM + MapTiler** to display theatre locations.  
+- **Clean Architecture**: Built using **MVVM + Clean Architecture** principles for scalable and maintainable code.  
+- **Modern Tech Stack**:  
+  - **Kotlin & Jetpack Compose** for UI  
+  - **Coroutines & Flow** for async and reactive data handling  
+  - **Hilt** for dependency injection  
+  - **ViewModel** for lifecycle-aware state management  
 
-Maps: OSM + MapTiler
+## Requirements
+- Android SDK version 35 or higher.  
+- Internet connection for fetching movie data and map tiles.  
 
-Asynchronous Tasks: Coroutines
+## Libraries & Tools
+- Jetpack Compose for UI.  
+- Firebase Authentication.  
+- OSM + MapTiler for maps.  
+- Coil for image loading.
+- Asynchronous Tasks: Coroutines
+
+## Getting Started
+
+### Clone the repository
+```bash
+git clone https://github.com/yourusername/LookMyShow.git
+cd LookMyShow
+
+
