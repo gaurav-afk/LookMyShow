@@ -29,7 +29,7 @@ Users can browse and book movies, and see theatre locations on interactive maps.
   - **ViewModel** for lifecycle-aware state management  
 
 ## Requirements
-- Android SDK version 35 or higher.  
+- Android SDK version 30 or higher.  
 - Internet connection for signup and login.
 
 ## Libraries & Tools
