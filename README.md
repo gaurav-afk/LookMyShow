@@ -14,6 +14,9 @@ Users can browse and book movies, and see theatre locations on interactive maps.
 <img width="200" height="400" alt="Screenshot_20251020_173511" src="https://github.com/user-attachments/assets/c5a6a94b-980c-4018-a1e4-dc0f0a098894" />
 <img width="200" height="400" alt="Screenshot_20251020_173519" src="https://github.com/user-attachments/assets/a317f398-d10c-41f3-8e08-ece56461530e" />
 <img width="200" height="400" alt="Screenshot_20251021_110843" src="https://github.com/user-attachments/assets/78d55820-a341-4a9d-917a-6f18e9d7b230" />
+<img width="200" height="400" alt="Screenshot_20251021_172952" src="https://github.com/user-attachments/assets/00d15587-1015-4acf-93aa-d6ab0c04c3f4" />
+<img width="200" height="400" alt="Screenshot_20251021_173026" src="https://github.com/user-attachments/assets/17f59c5d-ef25-4846-8347-e2dd7525dfc0" />
+<img width="200" height="400" alt="Screenshot_20251021_173018" src="https://github.com/user-attachments/assets/58d40181-1177-4f2a-8d08-78efc6e628ae" />
 <img width="200" height="400" alt="Screenshot_20251020_173617" src="https://github.com/user-attachments/assets/fa830724-7328-41e5-a7e9-6ac69659aa3c" />
 
 
