@@ -11,7 +11,8 @@ data class BookedTicketEntity(
     val movieTitle: String,
     val theater: String,
     val bookedSeats: String,
-    val price: String
+    val price: String,
+    val timing: String
 )
 
 fun BookedTicket.toEntity(): BookedTicketEntity {
@@ -20,7 +21,8 @@ fun BookedTicket.toEntity(): BookedTicketEntity {
         movieTitle = this.movieTitle,
         theater = this.theater,
         bookedSeats = this.bookedSeats,
-        price = this.price
+        price = this.price,
+        timing = this.timing
     )
 }
 
@@ -30,6 +32,7 @@ fun BookedTicketEntity.toDomain(): BookedTicket {
         movieTitle = this.movieTitle,
         theater = this.theater,
         bookedSeats = this.bookedSeats,
+        timing = this.timing,
         price = this.price
     )
 }

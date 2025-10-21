@@ -45,7 +45,6 @@ fun ProfileScreen(
 ) {
     val email = authViewModel.getUser()
 
-
     Box(
         modifier = Modifier
             .fillMaxSize()

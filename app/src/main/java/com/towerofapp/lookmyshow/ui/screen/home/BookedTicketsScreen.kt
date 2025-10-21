@@ -25,6 +25,12 @@ fun BookedTicketsScreen(
     navController: NavController,
     viewModel: BookedTicketViewModel = hiltViewModel()
 ) {
+    val tickets by viewModel.bookedTickets.collectAsState()
+
+    LaunchedEffect(Unit) {
+        viewModel.getBookedTickets()
+    }
+
     Column {
         TopAppBar(
             title = { Text("Booked Tickets", color = Color.White) },
@@ -45,12 +51,6 @@ fun BookedTicketsScreen(
             .padding(horizontal = 16.dp)
         )
         {
-            val tickets by viewModel.bookedTickets.collectAsState()
-
-            LaunchedEffect(Unit) {
-                viewModel.getBookedTickets()
-            }
-
             if (tickets.isEmpty()) {
                 // No Tickets
                 Column(
@@ -92,6 +92,7 @@ fun TicketCard(ticket: BookedTicket) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = ticket.movieTitle, style = MaterialTheme.typography.titleMedium)
             Spacer(modifier = Modifier.height(4.dp))
+            Text(text = "Time: ${ticket.timing}", style = MaterialTheme.typography.bodyMedium)
             Text(text = "Theater: ${ticket.theater}", style = MaterialTheme.typography.bodyMedium)
             Text(text = "Seat: ${ticket.bookedSeats}", style = MaterialTheme.typography.bodyMedium)
         }

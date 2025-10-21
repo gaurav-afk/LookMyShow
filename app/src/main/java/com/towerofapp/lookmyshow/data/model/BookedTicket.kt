@@ -5,6 +5,6 @@ data class BookedTicket(
     val movieTitle: String,
     val theater: String,
     val bookedSeats: String,
+    val timing: String,
     val price: String
 )
-

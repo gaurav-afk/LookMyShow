@@ -38,6 +38,7 @@ class BookedTicketViewModel @Inject constructor(
             try {
                 val tickets = getBookedTicketsUseCase()
                 _bookedTickets.value = tickets
+                Log.e("BookedTicketViewModel", "booked tickets: ${tickets}")
             } catch (e: Exception) {
                 Log.e("BookedTicketViewModel", "Error getting booked tickets", e)
             }

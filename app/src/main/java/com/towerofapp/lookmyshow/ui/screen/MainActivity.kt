@@ -27,23 +27,25 @@ class MainActivity : ComponentActivity() {
                 LaunchedEffect(Unit) {
                     authViewModel.checkUser()
                 }
-                AppNavGraph(navController = navController, startDestination = "login")
                 LaunchedEffect(state) {
                     when (state) {
                         is AuthViewModel.AuthState.Success -> {
                             navController.navigate("home") {
                                 popUpTo("login") { inclusive = true }
+                                launchSingleTop = true
                             }
                         }
                         AuthViewModel.AuthState.Idle       -> {
                             navController.navigate("login") {
                                 popUpTo("home") { inclusive = true }
+                                launchSingleTop = true
                             }
                         }
 
                         else                               -> {}
                     }
                 }
+                AppNavGraph(navController = navController, startDestination = "login")
             }
         }
     }
