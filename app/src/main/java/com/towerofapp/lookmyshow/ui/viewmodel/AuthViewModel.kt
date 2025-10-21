@@ -2,6 +2,7 @@ package com.towerofapp.lookmyshow.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.towerofapp.lookmyshow.core.SecurePrefsManager
 import com.towerofapp.lookmyshow.domain.usecase.IsUserLoggedInUseCase
 import com.towerofapp.lookmyshow.domain.usecase.LoginUseCase
 import com.towerofapp.lookmyshow.domain.usecase.LogoutUseCase
@@ -17,7 +18,8 @@ class AuthViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase,
     private val signUpUseCase: SignUpUseCase,
     private val logoutUseCase: LogoutUseCase,
-    private val isUserLoggedInUseCase: IsUserLoggedInUseCase
+    private val isUserLoggedInUseCase: IsUserLoggedInUseCase,
+    private val securePrefs: SecurePrefsManager
 ) : ViewModel() {
 
     private val _authState = MutableStateFlow<AuthState>(AuthState.Idle)
@@ -32,6 +34,10 @@ class AuthViewModel @Inject constructor(
             AuthState.Error(e.message)
         }
     }
+
+    fun saveUser(email: String) = securePrefs.saveEmail(email)
+
+    fun getUser() = securePrefs.getEmail()
 
     fun login(email: String, password: String) = viewModelScope.launch {
         if (email.isBlank() || password.isBlank()) {

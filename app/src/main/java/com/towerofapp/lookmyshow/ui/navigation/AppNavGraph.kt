@@ -31,18 +31,20 @@ fun AppNavGraph(navController: NavHostController, startDestination: String) {
             } ?: ""
             HallLayoutScreen(navController = navController, timeSlot = timeSlot, movieTitle = movieTitle, theater = theater)
         }
-        composable(route = "booking/{movieTitle}/{selectedSeats}/{theater}"){backStackEntry ->
+        composable(route = "booking/{movieTitle}/{selectedSeats}/{theater}/{timing}"){backStackEntry ->
             val movieTitle = backStackEntry.arguments?.getString("movieTitle") ?: ""
             val theater = backStackEntry.arguments?.getString("theater") ?: ""
             val seats = backStackEntry.arguments?.getString("selectedSeats")?.split(",") ?: emptyList()
-            BookingScreen(navController = navController, movieTitle=movieTitle, seats= seats, theater = theater)
+            val timing = backStackEntry.arguments?.getString("timing") ?: "N/A"
+            BookingScreen(navController = navController, movieTitle=movieTitle, seats= seats, theater = theater, timing = timing)
         }
-        composable(route = "success/{movieTitle}/{selectedSeats}/{theater}/{price}") {backStackEntry ->
+        composable(route = "success/{movieTitle}/{selectedSeats}/{theater}/{price}/{timing}") {backStackEntry ->
             val movieTitle = backStackEntry.arguments?.getString("movieTitle") ?: "N/A"
             val theater = backStackEntry.arguments?.getString("theater") ?: "N/A"
             val seats = backStackEntry.arguments?.getString("selectedSeats")?.split(",") ?: emptyList()
             val price = backStackEntry.arguments?.getString("price") ?: "N/A"
-            BookingSuccessScreen(navController = navController, movieTitle= movieTitle, bookedSeats = seats, theater = theater, totalPrice = price)
+            val timing = backStackEntry.arguments?.getString("timing") ?: "N/A"
+            BookingSuccessScreen(navController = navController, movieTitle= movieTitle, bookedSeats = seats, theater = theater, totalPrice = price, timing = timing)
         }
     }
 }

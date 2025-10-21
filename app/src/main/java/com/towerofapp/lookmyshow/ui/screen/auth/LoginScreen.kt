@@ -17,6 +17,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.towerofapp.lookmyshow.core.AppConfig
 
 @Composable
 fun LoginScreen(navController: NavController, viewModel: AuthViewModel = hiltViewModel()) {
@@ -62,6 +63,7 @@ fun LoginScreen(navController: NavController, viewModel: AuthViewModel = hiltVie
             is AuthViewModel.AuthState.Error -> Text("Error: ${(state as AuthViewModel.AuthState.Error).message}")
             is AuthViewModel.AuthState.Success -> LaunchedEffect(state) {
                 if (state is AuthViewModel.AuthState.Success) {
+                    viewModel.saveUser(email)
                     navController.navigate("home") {
                         popUpTo("login") { inclusive = true } // remove login/signup from back stack
                     }

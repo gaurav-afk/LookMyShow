@@ -29,6 +29,7 @@ fun BookingSuccessScreen(
     navController: NavController,
     movieTitle: String,
     theater: String,
+    timing: String,
     bookedSeats: List<String>,
     totalPrice: String
 ) {
@@ -69,6 +70,11 @@ fun BookingSuccessScreen(
             )
             Text(
                 text = "Theater: ${theater}",
+                style = MaterialTheme.typography.bodyMedium,
+                color = Color.Gray
+            )
+            Text(
+                text = "Timing: ${timing}",
                 style = MaterialTheme.typography.bodyMedium,
                 color = Color.Gray
             )

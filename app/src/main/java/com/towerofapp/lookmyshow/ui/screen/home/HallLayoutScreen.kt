@@ -96,7 +96,7 @@ fun HallLayoutScreen(
                         modifier = Modifier
                             .fillMaxSize()
                             .clickable{
-                                navController.navigate("booking/$movieTitle/${selectedSeats.joinToString(",")}/$theater")
+                                navController.navigate("booking/$movieTitle/${selectedSeats.joinToString(",")}/$theater/$decodedTimeSlot")
                             },
                         contentAlignment = Alignment.Center
                     ) {

@@ -33,7 +33,7 @@ class BookedTicketViewModel @Inject constructor(
         }
     }
 
-    fun loadBookedTickets() {
+    fun getBookedTickets() {
         viewModelScope.launch {
             try {
                 val tickets = getBookedTicketsUseCase()

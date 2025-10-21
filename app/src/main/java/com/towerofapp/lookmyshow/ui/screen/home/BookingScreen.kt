@@ -49,7 +49,8 @@ fun BookingScreen(
     navController: NavController,
     movieTitle: String,
     theater: String,
-    seats: List<String>
+    seats: List<String>,
+    timing: String
 ) {
     val coroutineScope = rememberCoroutineScope()
     Scaffold(
@@ -91,7 +92,7 @@ fun BookingScreen(
                                 coroutineScope.launch {
                                     viewModel.saveBookedTicket(BookedTicket(movieTitle = movieTitle, theater = theater, bookedSeats = seats.joinToString(separator = ","), price = (AppConfig.ticketPrice * seats.size).toString()))
                                 }
-                                navController.navigate("success/$movieTitle/${seats.joinToString(",")}/$theater/${AppConfig.ticketPrice * seats.size + AppConfig.convenienceFee}")
+                                navController.navigate("success/$movieTitle/${seats.joinToString(",")}/$theater/${AppConfig.ticketPrice * seats.size + AppConfig.convenienceFee}/$timing")
                             },
                         contentAlignment = Alignment.Center
                     ) {

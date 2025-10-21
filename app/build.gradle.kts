@@ -59,6 +59,8 @@ dependencies {
     implementation(libs.play.services.maps)
     implementation(libs.androidx.compose.foundation.layout)
 
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
+
     kapt("com.google.dagger:hilt-compiler:2.56.2")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     implementation("io.coil-kt:coil-compose:2.4.0")
