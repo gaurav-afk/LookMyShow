@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -17,49 +19,67 @@ import com.towerofapp.lookmyshow.data.model.BookedTicket
 import com.towerofapp.lookmyshow.ui.viewmodel.BookedTicketViewModel
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BookedTicketsScreen(
+    navController: NavController,
     viewModel: BookedTicketViewModel = hiltViewModel()
 ) {
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .statusBarsPadding()
-        .padding(16.dp)
-    ) {
-        val tickets by viewModel.bookedTickets.collectAsState()
+    Column {
+        TopAppBar(
+            title = { Text("Booked Tickets", color = Color.White) },
+            navigationIcon = {
+                IconButton(onClick = { navController.popBackStack() }) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowBack,
+                        contentDescription = "Back",
+                        tint = Color.White
+                    )
+                }
+            },
+            colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Red)
+        )
 
-        LaunchedEffect(Unit) {
-            viewModel.getBookedTickets()
-        }
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp)
+        )
+        {
+            val tickets by viewModel.bookedTickets.collectAsState()
 
-        if (tickets.isEmpty()) {
-            // No Tickets
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = "No tickets booked yet",
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = Color.Gray
-                )
+            LaunchedEffect(Unit) {
+                viewModel.getBookedTickets()
             }
-        } else {
-            // List of tickets
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize(),
-                contentPadding = PaddingValues(bottom = 120.dp, top = 20.dp, start = 8.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                items(tickets) { ticket ->
-                    TicketCard(ticket)
+
+            if (tickets.isEmpty()) {
+                // No Tickets
+                Column(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "No tickets booked yet",
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = Color.Gray
+                    )
+                }
+            } else {
+                // List of tickets
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    contentPadding = PaddingValues(top = 20.dp, bottom = 120.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    items(tickets) { ticket ->
+                        TicketCard(ticket)
+                    }
                 }
             }
         }
-    }
 
+    }
 }
 
 @Composable

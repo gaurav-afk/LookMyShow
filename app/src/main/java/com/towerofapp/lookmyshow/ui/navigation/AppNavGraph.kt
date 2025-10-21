@@ -1,6 +1,7 @@
 package com.towerofapp.lookmyshow.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -47,6 +48,6 @@ fun AppNavGraph(navController: NavHostController, startDestination: String) {
             val timing = backStackEntry.arguments?.getString("timing") ?: "N/A"
             BookingSuccessScreen(navController = navController, movieTitle= movieTitle, bookedSeats = seats, theater = theater, totalPrice = price, timing = timing)
         }
-        composable(route = "bookedTickets"){ BookedTicketsScreen() }
+        composable(route = "bookedTickets"){ BookedTicketsScreen(navController = navController) }
     }
 }
