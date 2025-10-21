@@ -42,8 +42,12 @@ Users can browse and book movies, and see theatre locations on interactive maps.
 - **ViewModel** for lifecycle-aware state management  
 - **RoomDB** to store bookedTickets
 - **Flow** for reactive data handling
-**Architecture:** MVVM + Clean Architecture
-**Compose APIs:** Used LaunchedEffect and DisposableEffect for lifecycle-aware state handling
+  
+## Architecture:
+- **MVVM + Clean** Architecture
+
+## Compose APIs:
+- **LaunchedEffect and DisposableEffect** for lifecycle-aware state handling
 
 ## Getting Started
 
