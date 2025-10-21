@@ -40,6 +40,7 @@ Users can browse and book movies, and see theatre locations on interactive maps.
 - **Coroutines** for asynchronous tasks  
 - **ViewModel** for lifecycle-aware state management  
 - **RoomDB** to store bookedTickets
+- **Flow** for reactive data handling
 
 ## Getting Started
 
