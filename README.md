@@ -37,7 +37,8 @@ Users can browse and book movies, and see theatre locations on interactive maps.
 - **Firebase Authentication** for login/signup  
 - **OSM + MapTiler** for maps  
 - **Coil** for image loading  
-- **Coroutines** for asynchronous tasks  
+- **Coroutines** for asynchronous tasks
+- **Hilt** for dependency injection  
 - **ViewModel** for lifecycle-aware state management  
 - **RoomDB** to store bookedTickets
 - **Flow** for reactive data handling
