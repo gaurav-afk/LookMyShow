@@ -75,7 +75,6 @@ fun MovieList(
             modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(bottom = 120.dp, top = 20.dp, start = 8.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
-
         ) {
             items(movies, key = { it.id }) { movie ->
                 MovieItem(
