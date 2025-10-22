@@ -1,5 +1,5 @@
 # 🎬 LookMyShow
-<img width="732" height="368" alt="LookMyShowBanner" src="https://github.com/user-attachments/assets/1b1639bb-3575-4f35-89a2-8b38375ad6d4" />
+<img width="1079" alt="LookMyShowBanner" src="https://github.com/user-attachments/assets/1b1639bb-3575-4f35-89a2-8b38375ad6d4" />
 
 ## Overview
 LookMyShow is an Android app designed to help users discover the latest movies, shows, and events nearby. The app provides showtimes, and booking integration — all in a modern, smooth, and intuitive interface.  
