@@ -30,8 +30,7 @@ fun HomeScreen(appNavController: NavHostController,viewModel: MoviesViewModel = 
         ) { innerPadding ->
             HomeNavGraph(
                 bottomNavHostController = bottomNavHostController,
-                appNavController = appNavController,
-                moviesViewModel = viewModel
+                appNavController = appNavController
             )
         }
 }
@@ -40,7 +39,6 @@ fun HomeScreen(appNavController: NavHostController,viewModel: MoviesViewModel = 
 fun HomeNavGraph(
     bottomNavHostController: NavHostController,
     appNavController: NavHostController,
-    moviesViewModel: MoviesViewModel,
 ) {
     NavHost(
         navController = bottomNavHostController,

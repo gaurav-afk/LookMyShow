@@ -26,15 +26,26 @@ fun LoginScreen(navController: NavController, viewModel: AuthViewModel = hiltVie
     val state by viewModel.authState.collectAsState()
     val focusManager = LocalFocusManager.current
 
+    LaunchedEffect(state) {
+        when (state) {
+            is AuthViewModel.AuthState.Success -> {
+                viewModel.saveUser(email)
+                navController.navigate("home") {
+                    popUpTo("login") { inclusive = true }
+                }
+            }
+            else -> Unit
+        }
+    }
     Column(
         modifier = Modifier
+            .fillMaxSize()
             .pointerInput(Unit) {
                 detectTapGestures {
                     focusManager.clearFocus()
                 }
             }
-            .fillMaxSize()
-            .background(color = Color(0xFFFFC00C0C)),
+            .background(color = Color(0xFFC00D0C)),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally) {
         TextField(
@@ -56,19 +67,9 @@ fun LoginScreen(navController: NavController, viewModel: AuthViewModel = hiltVie
             Text("Create account", color = Color.White)
         }
 
-        Log.d("loginScreen state:", state.toString())
-
         when (state) {
             is AuthViewModel.AuthState.Loading -> CircularProgressIndicator(color = Color.Red)
             is AuthViewModel.AuthState.Error -> Text("Error: ${(state as AuthViewModel.AuthState.Error).message}")
-            is AuthViewModel.AuthState.Success -> LaunchedEffect(state) {
-                if (state is AuthViewModel.AuthState.Success) {
-                    viewModel.saveUser(email)
-                    navController.navigate("home") {
-                        popUpTo("login") { inclusive = true } // remove login/signup from back stack
-                    }
-                }
-            }
             else -> {}
         }
     }

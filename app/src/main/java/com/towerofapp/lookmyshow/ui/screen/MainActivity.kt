@@ -1,8 +1,11 @@
 package com.towerofapp.lookmyshow.ui.screen
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
@@ -12,6 +15,7 @@ import com.towerofapp.lookmyshow.ui.viewmodel.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 @AndroidEntryPoint
@@ -45,7 +49,12 @@ class MainActivity : ComponentActivity() {
                         else                               -> {}
                     }
                 }
-                AppNavGraph(navController = navController, startDestination = "login")
+                androidx.compose.material3.Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = androidx.compose.ui.graphics.Color(0xFFC00D0C)
+                ) {
+                    AppNavGraph(navController = navController, startDestination = "login")
+                }
             }
         }
     }
