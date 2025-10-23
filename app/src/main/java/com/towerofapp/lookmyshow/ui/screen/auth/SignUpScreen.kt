@@ -24,6 +24,18 @@ fun SignUpScreen(navController: NavController, viewModel: AuthViewModel = hiltVi
     val focusManager = LocalFocusManager.current
     val state by viewModel.authState.collectAsState()
 
+    LaunchedEffect(state) {
+        when (state) {
+            is AuthViewModel.AuthState.Success -> {
+                viewModel.saveUser(email)
+                navController.navigate("home") {
+                    popUpTo("signup") { inclusive = true }
+                }
+            }
+            else -> Unit
+        }
+    }
+
     Column(
         modifier = Modifier
             .pointerInput(Unit){

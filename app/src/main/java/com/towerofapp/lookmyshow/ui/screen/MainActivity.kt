@@ -45,13 +45,12 @@ class MainActivity : ComponentActivity() {
                                 launchSingleTop = true
                             }
                         }
-
                         else                               -> {}
                     }
                 }
                 androidx.compose.material3.Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = androidx.compose.ui.graphics.Color(0xFFC00D0C)
+                    color = androidx.compose.ui.graphics.Color(0xFFFFFFFF)
                 ) {
                     AppNavGraph(navController = navController, startDestination = "login")
                 }
