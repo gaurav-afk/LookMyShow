@@ -94,7 +94,7 @@ fun BookingSuccessScreen(
                 horizontalArrangement = Arrangement.Center
             ) {
                 Button(
-                    onClick = { navController.navigate("home") },
+                    onClick = { navController.navigate("home"){popUpTo(0)} },
                     modifier = Modifier.padding(top = 16.dp)
                 ) {
                     Text(text = "Done")
