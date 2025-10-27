@@ -23,7 +23,9 @@ fun SignUpScreen(navController: NavController, viewModel: AuthViewModel = hiltVi
     var password by remember { mutableStateOf("") }
     val focusManager = LocalFocusManager.current
     val state by viewModel.authState.collectAsState()
-
+    LaunchedEffect(Unit) {
+        viewModel.checkUser()
+    }
     LaunchedEffect(state) {
         when (state) {
             is AuthViewModel.AuthState.Success -> {
