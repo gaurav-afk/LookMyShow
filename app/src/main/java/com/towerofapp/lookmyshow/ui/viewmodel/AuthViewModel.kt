@@ -22,7 +22,7 @@ class AuthViewModel @Inject constructor(
     private val securePrefs: SecurePrefsManager
 ) : ViewModel() {
 
-    private val _authState = MutableStateFlow<AuthState>(AuthState.Idle)
+    private val _authState = MutableStateFlow<AuthState>(AuthState.Loading)
     val authState = _authState.asStateFlow()
 
     fun signUp(email: String, password: String) = viewModelScope.launch {
@@ -40,6 +40,7 @@ class AuthViewModel @Inject constructor(
     fun getUser() = securePrefs.getEmail()
 
     fun login(email: String, password: String) = viewModelScope.launch {
+        _authState.value = AuthState.Idle
         if (email.isBlank() || password.isBlank()) {
             _authState.value = AuthState.Error("Email and password cannot be empty.")
             return@launch
@@ -66,6 +67,9 @@ class AuthViewModel @Inject constructor(
 
     fun checkUser() {
         if (isUserLoggedInUseCase()) _authState.value = AuthState.Success
+        else {
+            _authState.value = AuthState.Idle
+        }
     }
 
      sealed class AuthState {

@@ -9,9 +9,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 
 @Composable
-fun LoadingScreen() {
+fun LoadingScreen(navController: NavController) {
     Box(modifier = Modifier
         .fillMaxSize()
         .background(color = Color.Black),

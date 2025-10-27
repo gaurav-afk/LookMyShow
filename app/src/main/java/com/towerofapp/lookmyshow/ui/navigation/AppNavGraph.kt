@@ -12,6 +12,7 @@ import com.towerofapp.lookmyshow.ui.screen.home.BookingScreen
 import com.towerofapp.lookmyshow.ui.screen.home.BookingSuccessScreen
 import com.towerofapp.lookmyshow.ui.screen.home.HallLayoutScreen
 import com.towerofapp.lookmyshow.ui.screen.home.HomeScreen
+import com.towerofapp.lookmyshow.ui.screen.home.LoadingScreen
 import com.towerofapp.lookmyshow.ui.screen.home.TheatersScreen
 
 @Composable
@@ -20,6 +21,7 @@ fun AppNavGraph(navController: NavHostController, startDestination: String) {
         composable("login") { LoginScreen(navController) }
         composable("signup") { SignUpScreen(navController) }
         composable("home") { HomeScreen(navController) }
+        composable("loading") { LoadingScreen(navController) }
         composable("theatres/{movieId}") { backStackEntry ->
             val movieId = backStackEntry.arguments?.getString("movieId") ?: ""
             TheatersScreen(movieId = movieId, navController = navController)

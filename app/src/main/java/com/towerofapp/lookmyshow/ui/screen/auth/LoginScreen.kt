@@ -25,6 +25,9 @@ fun LoginScreen(navController: NavController, viewModel: AuthViewModel = hiltVie
     var password by remember { mutableStateOf("") }
     val state by viewModel.authState.collectAsState()
     val focusManager = LocalFocusManager.current
+    LaunchedEffect(Unit) {
+        viewModel.checkUser()
+    }
 
     LaunchedEffect(state) {
         when (state) {
@@ -69,6 +72,7 @@ fun LoginScreen(navController: NavController, viewModel: AuthViewModel = hiltVie
 
         when (state) {
             is AuthViewModel.AuthState.Loading -> CircularProgressIndicator(color = Color.Red)
+            is AuthViewModel.AuthState.Success -> Text("Login successful")
             is AuthViewModel.AuthState.Error -> Text("Error: ${(state as AuthViewModel.AuthState.Error).message}")
             else -> {}
         }

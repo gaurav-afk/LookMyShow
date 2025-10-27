@@ -70,20 +70,32 @@ fun MovieList(
             )
         }
 
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(bottom = 120.dp, top = 20.dp, start = 8.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+                .padding(bottom = 16.dp, start = 16.dp, end = 16.dp),
+            contentAlignment = Alignment.Center
         ) {
-            items(movies, key = { it.id }) { movie ->
-                MovieItem(
-                    movie = movie,
-                    onClick = {
-                        navController.navigate("theatres/${movie.id}")
-                    }
-                )
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                contentPadding = PaddingValues(top = 30.dp, bottom = 120.dp),
+                modifier = Modifier.wrapContentHeight()
+            ) {
+                items(movies, key = { it.id }) { movie ->
+                    MovieItem(
+                        movie = movie,
+                        onClick = {
+                            navController.navigate("theatres/${movie.id}")
+                        }
+                    )
+                }
             }
         }
+
+
     }
+
 }

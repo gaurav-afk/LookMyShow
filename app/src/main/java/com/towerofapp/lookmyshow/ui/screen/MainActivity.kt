@@ -52,7 +52,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = androidx.compose.ui.graphics.Color(0xFFFFFFFF)
                 ) {
-                    AppNavGraph(navController = navController, startDestination = "login")
+                    AppNavGraph(navController = navController, startDestination = "loading")
                 }
             }
         }
