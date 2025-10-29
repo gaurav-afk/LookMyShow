@@ -23,9 +23,11 @@ fun SignUpScreen(navController: NavController, viewModel: AuthViewModel = hiltVi
     var password by remember { mutableStateOf("") }
     val focusManager = LocalFocusManager.current
     val state by viewModel.authState.collectAsState()
+
     LaunchedEffect(Unit) {
         viewModel.checkUser()
     }
+
     LaunchedEffect(state) {
         when (state) {
             is AuthViewModel.AuthState.Success -> {
@@ -56,7 +58,9 @@ fun SignUpScreen(navController: NavController, viewModel: AuthViewModel = hiltVi
         Spacer(modifier = Modifier.height(16.dp))
         SignUpButton(viewModel = viewModel, email = email, password = password)
         Spacer(modifier = Modifier.height(8.dp))
-        TextButton(onClick = { navController.navigate("login") }) {
+        TextButton(onClick = { navController.navigate("login"){
+            popUpTo("signup"){inclusive = true}
+        } }) {
             Text("Already have an account?", color = Color.White)
         }
 
@@ -66,7 +70,7 @@ fun SignUpScreen(navController: NavController, viewModel: AuthViewModel = hiltVi
             AuthViewModel.AuthState.Success  -> LaunchedEffect(Unit) {
                 if (state is AuthViewModel.AuthState.Success) {
                     navController.navigate("home") {
-                        popUpTo("login") { inclusive = true }
+                        popUpTo("signup") { inclusive = true }
                     }
                 }
             }

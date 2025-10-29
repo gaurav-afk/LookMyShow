@@ -35,6 +35,7 @@ fun LoginScreen(navController: NavController, viewModel: AuthViewModel = hiltVie
                 viewModel.saveUser(email)
                 navController.navigate("home") {
                     popUpTo("login") { inclusive = true }
+                    launchSingleTop = true
                 }
             }
             else -> Unit
@@ -66,7 +67,9 @@ fun LoginScreen(navController: NavController, viewModel: AuthViewModel = hiltVie
         Spacer(modifier = Modifier.height(16.dp))
         LoginButton(viewModel = viewModel, email = email, password = password)
         Spacer(modifier = Modifier.height(8.dp))
-        TextButton(onClick = { navController.navigate("signup") }) {
+        TextButton(onClick = { navController.navigate("signup"){
+            popUpTo("login"){inclusive = true}
+        } }) {
             Text("Create account", color = Color.White)
         }
 

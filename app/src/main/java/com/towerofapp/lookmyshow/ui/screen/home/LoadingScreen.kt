@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
 @Composable
-fun LoadingScreen(navController: NavController) {
+fun LoadingScreen() {
     Box(modifier = Modifier
         .fillMaxSize()
         .background(color = Color.Black),

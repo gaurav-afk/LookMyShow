@@ -4,6 +4,7 @@ package com.towerofapp.lookmyshow.ui.screen.home
 import android.annotation.SuppressLint
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
@@ -15,13 +16,14 @@ import com.towerofapp.lookmyshow.ui.viewmodel.MoviesViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun HomeScreen(appNavController: NavHostController,viewModel: MoviesViewModel = hiltViewModel()) {
+fun HomeScreen(appNavController: NavHostController) {
     val bottomNavHostController = rememberNavController()
     val items = listOf(
         BottomNavItem.Movies,
         BottomNavItem.Map,
         BottomNavItem.Profile
     )
+
 
         Scaffold(
             bottomBar = {

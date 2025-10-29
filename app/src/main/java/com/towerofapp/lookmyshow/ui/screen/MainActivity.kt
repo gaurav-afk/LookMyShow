@@ -1,8 +1,10 @@
 package com.towerofapp.lookmyshow.ui.screen
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -28,6 +30,15 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 val authViewModel: AuthViewModel = hiltViewModel()
                 val state by authViewModel.authState.collectAsState()
+
+                @SuppressLint("RestrictedApi")
+                LaunchedEffect(Unit) {
+                    navController.currentBackStack.collect { entries ->
+                        val routes = entries.map { it.destination.route }
+                        Log.d("Navigation", "Current backstack: $routes")
+                    }
+                }
+
                 LaunchedEffect(Unit) {
                     authViewModel.checkUser()
                 }
@@ -35,13 +46,13 @@ class MainActivity : ComponentActivity() {
                     when (state) {
                         is AuthViewModel.AuthState.Success -> {
                             navController.navigate("home") {
-                                popUpTo("login") { inclusive = true }
+                                popUpTo("loading") { inclusive = true }
                                 launchSingleTop = true
                             }
                         }
                         AuthViewModel.AuthState.Idle       -> {
                             navController.navigate("login") {
-                                popUpTo("home") { inclusive = true }
+                                popUpTo(navController.graph.id) { inclusive = true }
                                 launchSingleTop = true
                             }
                         }
