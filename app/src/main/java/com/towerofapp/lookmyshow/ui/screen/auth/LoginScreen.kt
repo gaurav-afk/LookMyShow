@@ -21,7 +21,11 @@ import androidx.navigation.NavController
 import com.towerofapp.lookmyshow.core.AppConfig
 
 @Composable
-fun LoginScreen(onNavigateToSignUp: () -> Unit, onNavigateToHome: () -> Unit, viewModel: AuthViewModel = hiltViewModel()) {
+fun LoginScreen(
+    onNavigateToSignUp: () -> Unit,
+    onNavigateToHome: () -> Unit,
+    viewModel: AuthViewModel = hiltViewModel()
+) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     val state by viewModel.authState.collectAsState()
@@ -37,7 +41,8 @@ fun LoginScreen(onNavigateToSignUp: () -> Unit, onNavigateToHome: () -> Unit, vi
                 viewModel.saveUser(email)
                 onNavigateToHome()
             }
-            else -> Unit
+
+            else                               -> Unit
         }
     }
 
@@ -67,17 +72,17 @@ fun LoginScreen(onNavigateToSignUp: () -> Unit, onNavigateToHome: () -> Unit, vi
         Spacer(modifier = Modifier.height(16.dp))
         LoginButton(viewModel = viewModel, email = email, password = password)
         Spacer(modifier = Modifier.height(8.dp))
-        TextButton(onClick = {
-            onNavigateToSignUp
-        }) {
+        TextButton(
+            onClick = onNavigateToSignUp
+        ) {
             Text("Create account", color = Color.White)
         }
 
         when (state) {
             is AuthViewModel.AuthState.Loading -> CircularProgressIndicator(color = Color.Red)
             is AuthViewModel.AuthState.Success -> Text("Login successful")
-            is AuthViewModel.AuthState.Error -> Text("Error: ${(state as AuthViewModel.AuthState.Error).message}")
-            else -> {}
+            is AuthViewModel.AuthState.Error   -> Text("Error: ${(state as AuthViewModel.AuthState.Error).message}")
+            else                               -> {}
         }
     }
 }

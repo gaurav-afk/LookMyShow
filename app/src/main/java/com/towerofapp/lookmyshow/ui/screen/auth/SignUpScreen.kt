@@ -33,7 +33,7 @@ fun SignUpScreen(onNavigateToHome: () -> Unit, onNavigateToLogin: ()->Unit, view
         when (state) {
             is AuthViewModel.AuthState.Success -> {
                 viewModel.saveUser(email)
-                onNavigateToHome
+                onNavigateToHome()
             }
             else -> Unit
         }
@@ -57,9 +57,8 @@ fun SignUpScreen(onNavigateToHome: () -> Unit, onNavigateToLogin: ()->Unit, view
         Spacer(modifier = Modifier.height(16.dp))
         SignUpButton(viewModel = viewModel, email = email, password = password)
         Spacer(modifier = Modifier.height(8.dp))
-        TextButton(onClick = {
-            onNavigateToLogin
-             }) {
+        TextButton(onClick = onNavigateToLogin
+             ) {
             Text("Already have an account?", color = Color.White)
         }
 

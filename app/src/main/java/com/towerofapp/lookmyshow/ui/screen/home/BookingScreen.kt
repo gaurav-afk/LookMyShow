@@ -69,7 +69,7 @@ fun BookingScreen(
                     }
                 },
                 navigationIcon = {
-                    IconButton(onClick = { onPopBackStack }) {
+                    IconButton(onClick = onPopBackStack) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
                             contentDescription = "Back"
@@ -95,7 +95,7 @@ fun BookingScreen(
                                 coroutineScope.launch {
                                     viewModel.saveBookedTicket(BookedTicket(movieTitle = movieTitle, theater = theater, bookedSeats = seats.joinToString(separator = ","), price = (AppConfig.ticketPrice * seats.size).toString(), timing = timing))
                                 }
-                                onNavigateToSuccess
+                                onNavigateToSuccess()
                             },
                         contentAlignment = Alignment.Center
                     ) {
