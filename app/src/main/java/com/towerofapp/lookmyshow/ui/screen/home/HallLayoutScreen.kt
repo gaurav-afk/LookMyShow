@@ -1,5 +1,6 @@
 package com.towerofapp.lookmyshow.ui.screen.home
 
+import android.R.attr.padding
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -28,7 +29,8 @@ import com.towerofapp.lookmyshow.ui.components.model.SeatType
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HallLayoutScreen(
-    navController: NavController,
+    onPopBackStack: ()-> Unit,
+    onNavigateToBooking: (movieIdParam: String, safeTimeParam: String, encodedTitleParam: String, theatreNameParam: String)->Unit,
     theater: String,
     timeSlot: String,
     movieTitle: String
@@ -78,7 +80,7 @@ fun HallLayoutScreen(
                     }
                     },
                 navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
+                    IconButton(onClick = { onPopBackStack }) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
                             contentDescription = "Back"
@@ -96,7 +98,7 @@ fun HallLayoutScreen(
                         modifier = Modifier
                             .fillMaxSize()
                             .clickable{
-                                navController.navigate("booking/$movieTitle/${selectedSeats.joinToString(",")}/$theater/$decodedTimeSlot")
+                                onNavigateToBooking(movieTitle,selectedSeats.joinToString(","),theater,decodedTimeSlot)
                             },
                         contentAlignment = Alignment.Center
                     ) {
@@ -140,7 +142,7 @@ fun HallLayoutScreen(
                     .fillMaxWidth()
                     .weight(1f),
             ) { seat ->
-                var seatNumber = seat.row+seat.number.toString()
+                val seatNumber = seat.row+seat.number.toString()
                 if (seatNumber in selectedSeats){
                     selectedSeats -= seatNumber
                     seat.status = SeatStatus.AVAILABLE

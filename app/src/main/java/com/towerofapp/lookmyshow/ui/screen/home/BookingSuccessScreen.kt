@@ -26,7 +26,7 @@ import kotlin.collections.joinToString
 
 @Composable
 fun BookingSuccessScreen(
-    navController: NavController,
+    onNavigateToHome: ()-> Unit,
     movieTitle: String,
     theater: String,
     timing: String,
@@ -94,7 +94,7 @@ fun BookingSuccessScreen(
                 horizontalArrangement = Arrangement.Center
             ) {
                 Button(
-                    onClick = { navController.navigate("home"){popUpTo(0)} },
+                    onClick = onNavigateToHome,
                     modifier = Modifier.padding(top = 16.dp)
                 ) {
                     Text(text = "Done")

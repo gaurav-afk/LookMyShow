@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.towerofapp.lookmyshow.data.model.Theater
 import com.towerofapp.lookmyshow.ui.viewmodel.MoviesViewModel
@@ -29,7 +30,8 @@ import com.towerofapp.lookmyshow.data.model.Movie
 @Composable
 fun TheatersScreen(
     movieId: String,
-    navController: NavController,
+    onPopBackStack: () -> Unit,
+    onNavigateToHallLayout: (movieIdParam: String, safeTimeParam: String, encodedTitleParam: String, theatreNameParam: String) -> Unit,
     viewModel: MoviesViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -38,7 +40,7 @@ fun TheatersScreen(
         TopAppBar(
             title = { Text("Theaters", color = Color.White) },
             navigationIcon = {
-                IconButton(onClick = { navController.popBackStack() }) {
+                IconButton(onClick = { onPopBackStack }) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
                         contentDescription = "Back",
@@ -72,7 +74,7 @@ fun TheatersScreen(
                                 verticalArrangement = Arrangement.spacedBy(12.dp)
                             ) {
                                 items(movie.theaters) { theatre ->
-                                    TheatreItem(theatre = theatre, navController = navController, movie)
+                                    TheatreItem(theatre = theatre, movie= movie, onNavigateToHallLayout = onNavigateToHallLayout)
                                 }
                             }
                         }
@@ -102,7 +104,9 @@ fun TheatersScreen(
 }
 
 @Composable
-fun TheatreItem(theatre: Theater, navController: NavController, movie: Movie) {
+fun TheatreItem(theatre: Theater,
+                onNavigateToHallLayout: (movieIdParam: String, safeTimeParam: String, encodedTitleParam: String, theatreNameParam: String) -> Unit,
+                movie: Movie) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -124,11 +128,9 @@ fun TheatreItem(theatre: Theater, navController: NavController, movie: Movie) {
                     modifier = Modifier
                         .border(width = 1.dp, color = Color.Red, shape = CircleShape)
                         .clickable {
-                            // Navigate to HallLayoutScreen
                             val safeTime = time.replace(":", "-")
-                            Log.d("NAV", "Navigating to: hall/${movie.id}/$safeTime")
                             val encodedTitle = java.net.URLEncoder.encode(movie.title, "UTF-8")
-                            navController.navigate("hall/${movie.id}/$safeTime/$encodedTitle/${theatre.name}")
+                            onNavigateToHallLayout(movie.id, safeTime, encodedTitle, theatre.name)
                         }
                         .padding(horizontal = 8.dp, vertical = 4.dp)
                 ) {

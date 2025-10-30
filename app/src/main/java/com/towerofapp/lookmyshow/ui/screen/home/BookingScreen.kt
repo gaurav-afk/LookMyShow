@@ -36,8 +36,10 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.towerofapp.lookmyshow.core.AppConfig
+import com.towerofapp.lookmyshow.core.AppConfig.ticketPrice
 import com.towerofapp.lookmyshow.data.model.BookedTicket
 import com.towerofapp.lookmyshow.ui.viewmodel.BookedTicketViewModel
 import kotlinx.coroutines.launch
@@ -46,7 +48,8 @@ import kotlinx.coroutines.launch
 @Composable
 fun BookingScreen(
     viewModel: BookedTicketViewModel = hiltViewModel(),
-    navController: NavController,
+    onPopBackStack: ()->Unit,
+    onNavigateToSuccess: ()->Unit,
     movieTitle: String,
     theater: String,
     seats: List<String>,
@@ -66,7 +69,7 @@ fun BookingScreen(
                     }
                 },
                 navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
+                    IconButton(onClick = { onPopBackStack }) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
                             contentDescription = "Back"
@@ -92,7 +95,7 @@ fun BookingScreen(
                                 coroutineScope.launch {
                                     viewModel.saveBookedTicket(BookedTicket(movieTitle = movieTitle, theater = theater, bookedSeats = seats.joinToString(separator = ","), price = (AppConfig.ticketPrice * seats.size).toString(), timing = timing))
                                 }
-                                navController.navigate("success/$movieTitle/${seats.joinToString(",")}/$theater/${AppConfig.ticketPrice * seats.size + AppConfig.convenienceFee}/$timing")
+                                onNavigateToSuccess
                             },
                         contentAlignment = Alignment.Center
                     ) {

@@ -12,7 +12,6 @@ import androidx.navigation.compose.*
 import com.towerofapp.lookmyshow.ui.components.GlassNavigationBar
 import com.towerofapp.lookmyshow.ui.navigation.BottomNavItem
 import com.towerofapp.lookmyshow.ui.theme.LookMyShowTheme
-import com.towerofapp.lookmyshow.ui.viewmodel.MoviesViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -23,8 +22,6 @@ fun HomeScreen(appNavController: NavHostController) {
         BottomNavItem.Map,
         BottomNavItem.Profile
     )
-
-
         Scaffold(
             bottomBar = {
                 GlassNavigationBar(items = items, navController = bottomNavHostController)

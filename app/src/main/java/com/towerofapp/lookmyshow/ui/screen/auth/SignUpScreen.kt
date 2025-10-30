@@ -15,10 +15,11 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 
 @Composable
-fun SignUpScreen(navController: NavController, viewModel: AuthViewModel = hiltViewModel()) {
+fun SignUpScreen(onNavigateToHome: () -> Unit, onNavigateToLogin: ()->Unit, viewModel: AuthViewModel = hiltViewModel()) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     val focusManager = LocalFocusManager.current
@@ -32,9 +33,7 @@ fun SignUpScreen(navController: NavController, viewModel: AuthViewModel = hiltVi
         when (state) {
             is AuthViewModel.AuthState.Success -> {
                 viewModel.saveUser(email)
-                navController.navigate("home") {
-                    popUpTo("signup") { inclusive = true }
-                }
+                onNavigateToHome
             }
             else -> Unit
         }
@@ -58,9 +57,9 @@ fun SignUpScreen(navController: NavController, viewModel: AuthViewModel = hiltVi
         Spacer(modifier = Modifier.height(16.dp))
         SignUpButton(viewModel = viewModel, email = email, password = password)
         Spacer(modifier = Modifier.height(8.dp))
-        TextButton(onClick = { navController.navigate("login"){
-            popUpTo("signup"){inclusive = true}
-        } }) {
+        TextButton(onClick = {
+            onNavigateToLogin
+             }) {
             Text("Already have an account?", color = Color.White)
         }
 
@@ -69,9 +68,7 @@ fun SignUpScreen(navController: NavController, viewModel: AuthViewModel = hiltVi
             is AuthViewModel.AuthState.Error -> Text("Error: ${(state as AuthViewModel.AuthState.Error).message}")
             AuthViewModel.AuthState.Success  -> LaunchedEffect(Unit) {
                 if (state is AuthViewModel.AuthState.Success) {
-                    navController.navigate("home") {
-                        popUpTo("signup") { inclusive = true }
-                    }
+                    onNavigateToHome
                 }
             }
             else                             -> {}

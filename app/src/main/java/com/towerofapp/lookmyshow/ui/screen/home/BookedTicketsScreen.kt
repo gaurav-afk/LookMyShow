@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.towerofapp.lookmyshow.data.model.BookedTicket
 import com.towerofapp.lookmyshow.ui.viewmodel.BookedTicketViewModel
@@ -22,7 +23,7 @@ import com.towerofapp.lookmyshow.ui.viewmodel.BookedTicketViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BookedTicketsScreen(
-    navController: NavController,
+    onPopBackStack: ()->Unit,
     viewModel: BookedTicketViewModel = hiltViewModel()
 ) {
     val tickets by viewModel.bookedTickets.collectAsState()
@@ -35,7 +36,7 @@ fun BookedTicketsScreen(
         TopAppBar(
             title = { Text("Booked Tickets", color = Color.White) },
             navigationIcon = {
-                IconButton(onClick = { navController.popBackStack() }) {
+                IconButton(onClick = onPopBackStack) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
                         contentDescription = "Back",

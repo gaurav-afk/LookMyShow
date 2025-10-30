@@ -16,15 +16,17 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.towerofapp.lookmyshow.core.AppConfig
 
 @Composable
-fun LoginScreen(navController: NavController, viewModel: AuthViewModel = hiltViewModel()) {
+fun LoginScreen(onNavigateToSignUp: () -> Unit, onNavigateToHome: () -> Unit, viewModel: AuthViewModel = hiltViewModel()) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     val state by viewModel.authState.collectAsState()
     val focusManager = LocalFocusManager.current
+
     LaunchedEffect(Unit) {
         viewModel.checkUser()
     }
@@ -33,14 +35,12 @@ fun LoginScreen(navController: NavController, viewModel: AuthViewModel = hiltVie
         when (state) {
             is AuthViewModel.AuthState.Success -> {
                 viewModel.saveUser(email)
-                navController.navigate("home") {
-                    popUpTo("login") { inclusive = true }
-                    launchSingleTop = true
-                }
+                onNavigateToHome()
             }
             else -> Unit
         }
     }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -67,9 +67,9 @@ fun LoginScreen(navController: NavController, viewModel: AuthViewModel = hiltVie
         Spacer(modifier = Modifier.height(16.dp))
         LoginButton(viewModel = viewModel, email = email, password = password)
         Spacer(modifier = Modifier.height(8.dp))
-        TextButton(onClick = { navController.navigate("signup"){
-            popUpTo("login"){inclusive = true}
-        } }) {
+        TextButton(onClick = {
+            onNavigateToSignUp
+        }) {
             Text("Create account", color = Color.White)
         }
 

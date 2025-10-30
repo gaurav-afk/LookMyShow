@@ -26,7 +26,7 @@ import com.towerofapp.lookmyshow.ui.components.model.SeatType
 
 @Composable
 fun HallLayoutView(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     hallLayout: HallLayout,
     onSeatSelected: (Seat) -> Unit
 ) {
