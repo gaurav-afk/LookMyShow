@@ -7,7 +7,7 @@ Currently, the app uses static data for movies, showtimes, and theatres.
 Users can browse and book movies, and see theatre locations on interactive maps. The app is built using **MVVM + Clean Architecture**, **Jetpack Compose**, and modern Android development practices.
 
 ## Demo
-Uploading lookMyShow_demo.mp4…
+https://github.com/user-attachments/assets/f586dce4-6367-4b3f-a38c-3552949e5634
 
 
 ## Screenshots
