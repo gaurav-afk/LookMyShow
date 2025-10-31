@@ -6,6 +6,10 @@ LookMyShow is an Android app designed to help users discover the latest movies, 
 Currently, the app uses static data for movies, showtimes, and theatres.
 Users can browse and book movies, and see theatre locations on interactive maps. The app is built using **MVVM + Clean Architecture**, **Jetpack Compose**, and modern Android development practices.
 
+## Demo
+Uploading lookMyShow_demo.mp4…
+
+
 ## Screenshots
 <img width="200" height="400" alt="Screenshot_20251020_173701" src="https://github.com/user-attachments/assets/c03fb430-6efc-4e77-a3b1-3a1216f56769" />
 <img width="200" height="400" alt="Screenshot_20251020_173623" src="https://github.com/user-attachments/assets/2c204504-ba9b-436b-9cda-e5fe2b8d7596" />
