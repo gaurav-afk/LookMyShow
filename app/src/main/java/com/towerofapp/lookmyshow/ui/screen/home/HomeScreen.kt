@@ -16,12 +16,12 @@ import com.towerofapp.lookmyshow.ui.theme.LookMyShowTheme
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(appNavController: NavHostController) {
-    val bottomNavHostController = rememberNavController()
     val items = listOf(
         BottomNavItem.Movies,
         BottomNavItem.Map,
         BottomNavItem.Profile
     )
+    val bottomNavHostController = rememberNavController()
         Scaffold(
             bottomBar = {
                 GlassNavigationBar(items = items, navController = bottomNavHostController)

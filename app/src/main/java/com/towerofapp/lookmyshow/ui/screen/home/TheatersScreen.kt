@@ -40,7 +40,7 @@ fun TheatersScreen(
         TopAppBar(
             title = { Text("Theaters", color = Color.White) },
             navigationIcon = {
-                IconButton(onClick = { onPopBackStack }) {
+                IconButton(onClick =  onPopBackStack) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
                         contentDescription = "Back",

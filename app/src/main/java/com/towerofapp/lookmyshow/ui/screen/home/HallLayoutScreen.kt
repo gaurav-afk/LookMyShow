@@ -62,7 +62,7 @@ fun HallLayoutScreen(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ){
 
-                        Text("Select Seats ")
+                        Text("Select Seats")
                         if (selectedSeats.size>0){
                             Box(
                                 modifier = Modifier
@@ -80,7 +80,7 @@ fun HallLayoutScreen(
                     }
                     },
                 navigationIcon = {
-                    IconButton(onClick = { onPopBackStack }) {
+                    IconButton(onClick = onPopBackStack) {
                         Icon(
                             imageVector = Icons.Default.ArrowBack,
                             contentDescription = "Back"

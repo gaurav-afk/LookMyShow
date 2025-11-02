@@ -1,6 +1,5 @@
 package com.towerofapp.lookmyshow.ui.navigation
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -20,56 +19,61 @@ import com.towerofapp.lookmyshow.ui.screen.home.TheatersScreen
 fun AppNavGraph(navController: NavHostController, startDestination: String) {
     NavHost(navController, startDestination = startDestination) {
 
-        composable("login") {
+        composable(route = Screen.Login.route) {
             LoginScreen(
                 onNavigateToSignUp = {
-                    navController.navigate("signup") {
-                        popUpTo("login") { inclusive = true }
+                    navController.navigate(Screen.SignUp.route) {
+                        popUpTo(Screen.Login.route) { inclusive = true }
                     }
                 }, onNavigateToHome = {
-                    navController.navigate("home") {
-                        popUpTo("login") { inclusive = true }
+                    navController.navigate(Screen.Home.route) {
+                        popUpTo(Screen.Login.route) { inclusive = true }
                         launchSingleTop = true
                     }
                 })
         }
 
-        composable("signup") {
+        composable(route = Screen.SignUp.route) {
             SignUpScreen(onNavigateToLogin = {
-                navController.navigate("login") {
-                    popUpTo("signup") { inclusive = true }
+                navController.navigate(Screen.Login.route) {
+                    popUpTo(Screen.SignUp.route) { inclusive = true }
                 }
             }, onNavigateToHome = {
-                navController.navigate("home") {
-                    popUpTo("signup") { inclusive = true }
+                navController.navigate(Screen.Home.route) {
+                    popUpTo(Screen.SignUp.route) { inclusive = true }
                 }
             })
         }
 
-        composable("home") { HomeScreen(navController) }
+        composable(route = Screen.Home.route) { HomeScreen(navController) }
 
-        composable("loading") { LoadingScreen() }
+        composable(route = Screen.Loading.route) { LoadingScreen() }
 
-        composable("theatres/{movieId}") { backStackEntry ->
+        composable(route = Screen.Theatres.route) { backStackEntry ->
             val movieId = backStackEntry.arguments?.getString("movieId") ?: ""
             TheatersScreen(
                 movieId = movieId,
                 onPopBackStack = { navController.popBackStack() },
                 onNavigateToHallLayout = { movieIdParam, safeTimeParam, encodedTitleParam, theatreNameParam ->
-                    navController.navigate("hall/$movieIdParam/$safeTimeParam/$encodedTitleParam/$theatreNameParam")
+                    navController.navigate( route = Screen.Hall.createRoute(
+                        movieIdParam,
+                        safeTimeParam,
+                        encodedTitleParam,
+                        theatreNameParam
+                    ))
                 })
         }
 
-        composable("hall/{movieId}/{timeSlot}/{movieTitle}/{theater}") { backStackEntry ->
+        composable(route = Screen.Hall.route) { backStackEntry ->
             val timeSlot = backStackEntry.arguments?.getString("timeSlot") ?: ""
             val theater = backStackEntry.arguments?.getString("theater") ?: ""
             val movieTitle = backStackEntry.arguments?.getString("movieTitle")?.let {
                 java.net.URLDecoder.decode(it, "UTF-8")
             } ?: ""
             HallLayoutScreen(
-                onPopBackStack = {navController.popBackStack()},
-                onNavigateToBooking = { movieTitle, selectedSeats, theater, decodedTimeSlot ->
-                    navController.navigate("booking/$movieTitle/${selectedSeats}/$theater/$decodedTimeSlot")
+                onPopBackStack = { navController.popBackStack() },
+                onNavigateToBooking = { title, selectedSeats, theaterName, timing ->
+                    navController.navigate(route = Screen.Booking.createRoute(title, selectedSeats, theaterName, timing))
                 },
                 timeSlot = timeSlot,
                 movieTitle = movieTitle,
@@ -77,16 +81,18 @@ fun AppNavGraph(navController: NavHostController, startDestination: String) {
             )
         }
 
-        composable(route = "booking/{movieTitle}/{selectedSeats}/{theater}/{timing}") { backStackEntry ->
+
+        composable(route = Screen.Booking.route) { backStackEntry ->
             val movieTitle = backStackEntry.arguments?.getString("movieTitle") ?: ""
             val theater = backStackEntry.arguments?.getString("theater") ?: ""
             val seats =
                 backStackEntry.arguments?.getString("selectedSeats")?.split(",") ?: emptyList()
             val timing = backStackEntry.arguments?.getString("timing") ?: "N/A"
             BookingScreen(
-                onPopBackStack = {navController.popBackStack()},
+                onPopBackStack = { navController.popBackStack() },
                 onNavigateToSuccess = {
-                    navController.navigate("success/$movieTitle/${seats.joinToString(",")}/$theater/${AppConfig.ticketPrice * seats.size + AppConfig.convenienceFee}/$timing")
+                    val totalPrice = AppConfig.ticketPrice * seats.size + AppConfig.convenienceFee
+                    navController.navigate(route = Screen.Success.createRoute(movieTitle, seats, theater, totalPrice.toDouble(), timing))
                 },
                 movieTitle = movieTitle,
                 seats = seats,
@@ -94,7 +100,8 @@ fun AppNavGraph(navController: NavHostController, startDestination: String) {
                 timing = timing
             )
         }
-        composable(route = "success/{movieTitle}/{selectedSeats}/{theater}/{price}/{timing}") { backStackEntry ->
+
+        composable(route = Screen.Success.route) { backStackEntry ->
             val movieTitle = backStackEntry.arguments?.getString("movieTitle") ?: "N/A"
             val theater = backStackEntry.arguments?.getString("theater") ?: "N/A"
             val seats =
@@ -102,7 +109,7 @@ fun AppNavGraph(navController: NavHostController, startDestination: String) {
             val price = backStackEntry.arguments?.getString("price") ?: "N/A"
             val timing = backStackEntry.arguments?.getString("timing") ?: "N/A"
             BookingSuccessScreen(
-                onNavigateToHome = { navController.navigate("home") { popUpTo(0) } },
+                onNavigateToHome = { navController.navigate(Screen.Home.route) { popUpTo(0) } },
                 movieTitle = movieTitle,
                 bookedSeats = seats,
                 theater = theater,
@@ -110,6 +117,7 @@ fun AppNavGraph(navController: NavHostController, startDestination: String) {
                 timing = timing
             )
         }
-        composable(route = "bookedTickets") { BookedTicketsScreen(onPopBackStack = { navController.popBackStack() }) }
+
+        composable(route = Screen.BookedTickets.route) { BookedTicketsScreen(onPopBackStack = { navController.popBackStack() }) }
     }
 }
