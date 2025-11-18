@@ -3,7 +3,7 @@ package com.towerofapp.lookmyshow.ui.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.towerofapp.lookmyshow.data.model.BookedTicket
+import com.towerofapp.lookmyshow.domain.model.BookedTicket
 import com.towerofapp.lookmyshow.domain.usecase.DeleteAllBookedTicketUseCase
 import com.towerofapp.lookmyshow.domain.usecase.GetBookedTicketsUseCase
 import com.towerofapp.lookmyshow.domain.usecase.SaveBookedTicketUseCase

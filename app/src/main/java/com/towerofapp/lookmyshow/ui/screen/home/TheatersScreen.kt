@@ -1,6 +1,5 @@
 package com.towerofapp.lookmyshow.ui.screen.home
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -20,11 +19,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
-import com.towerofapp.lookmyshow.data.model.Theater
+import com.towerofapp.lookmyshow.domain.model.Theater
 import com.towerofapp.lookmyshow.ui.viewmodel.MoviesViewModel
-import com.towerofapp.lookmyshow.data.model.Movie
+import com.towerofapp.lookmyshow.domain.model.Movie
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -1,6 +1,6 @@
 package com.towerofapp.lookmyshow.domain.repository
 
-import com.towerofapp.lookmyshow.data.model.BookedTicket
+import com.towerofapp.lookmyshow.domain.model.BookedTicket
 
 interface BookedTicketRepository {
     suspend fun saveBookedTicket(ticket: BookedTicket)

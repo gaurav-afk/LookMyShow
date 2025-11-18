@@ -21,9 +21,10 @@ fun HomeScreen(appNavController: NavHostController) {
         BottomNavItem.Map,
         BottomNavItem.Profile
     )
+
     val bottomNavHostController = rememberNavController()
-        Scaffold(
-            bottomBar = {
+    Scaffold(
+        bottomBar = {
                 GlassNavigationBar(items = items, navController = bottomNavHostController)
             }
         ) { innerPadding ->

@@ -1,6 +1,6 @@
 package com.towerofapp.lookmyshow.domain.usecase
 
-import com.towerofapp.lookmyshow.data.model.BookedTicket
+import com.towerofapp.lookmyshow.domain.model.BookedTicket
 import com.towerofapp.lookmyshow.domain.repository.BookedTicketRepository
 import javax.inject.Inject
 

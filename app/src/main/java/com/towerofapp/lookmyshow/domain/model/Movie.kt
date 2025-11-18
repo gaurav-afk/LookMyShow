@@ -1,4 +1,4 @@
-package com.towerofapp.lookmyshow.data.model
+package com.towerofapp.lookmyshow.domain.model
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

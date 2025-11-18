@@ -1,4 +1,4 @@
-package com.towerofapp.lookmyshow.data.model
+package com.towerofapp.lookmyshow.domain.model
 
 data class BookedTicket(
     val id: Int = 0,

@@ -29,8 +29,8 @@ import com.towerofapp.lookmyshow.ui.components.model.SeatType
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HallLayoutScreen(
-    onPopBackStack: ()-> Unit,
-    onNavigateToBooking: (movieIdParam: String, safeTimeParam: String, encodedTitleParam: String, theatreNameParam: String)->Unit,
+    onPopBackStack: () -> Unit,
+    onNavigateToBooking: (movieIdParam: String, safeTimeParam: String, encodedTitleParam: String, theatreNameParam: String) -> Unit,
     theater: String,
     timeSlot: String,
     movieTitle: String
@@ -60,10 +60,9 @@ fun HallLayoutScreen(
                         modifier = Modifier
                             .fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
-                    ){
-
+                    ) {
                         Text("Select Seats")
-                        if (selectedSeats.size>0){
+                        if (selectedSeats.size > 0) {
                             Box(
                                 modifier = Modifier
                                     .size(28.dp)
@@ -78,7 +77,7 @@ fun HallLayoutScreen(
                             }
                         }
                     }
-                    },
+                },
                 navigationIcon = {
                     IconButton(onClick = onPopBackStack) {
                         Icon(
@@ -97,8 +96,13 @@ fun HallLayoutScreen(
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
-                            .clickable{
-                                onNavigateToBooking(movieTitle,selectedSeats.joinToString(","),theater,decodedTimeSlot)
+                            .clickable {
+                                onNavigateToBooking(
+                                    movieTitle,
+                                    selectedSeats.joinToString(","),
+                                    theater,
+                                    decodedTimeSlot
+                                )
                             },
                         contentAlignment = Alignment.Center
                     ) {
@@ -142,11 +146,11 @@ fun HallLayoutScreen(
                     .fillMaxWidth()
                     .weight(1f),
             ) { seat ->
-                val seatNumber = seat.row+seat.number.toString()
-                if (seatNumber in selectedSeats){
+                val seatNumber = seat.row + seat.number.toString()
+                if (seatNumber in selectedSeats) {
                     selectedSeats -= seatNumber
                     seat.status = SeatStatus.AVAILABLE
-                } else{
+                } else {
                     selectedSeats += seatNumber
                     seat.status = SeatStatus.SELECTED
                 }

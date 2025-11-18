@@ -1,6 +1,6 @@
 package com.towerofapp.lookmyshow.data.repository
 
-import com.towerofapp.lookmyshow.data.model.Movie
+import com.towerofapp.lookmyshow.domain.model.Movie
 import com.towerofapp.lookmyshow.data.remote.MockMovieDataSource
 import com.towerofapp.lookmyshow.domain.repository.MovieRepository
 import javax.inject.Inject

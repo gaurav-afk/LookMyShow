@@ -18,7 +18,6 @@ import com.towerofapp.lookmyshow.ui.screen.home.TheatersScreen
 @Composable
 fun AppNavGraph(navController: NavHostController, startDestination: String) {
     NavHost(navController, startDestination = startDestination) {
-
         composable(route = Screen.Login.route) {
             LoginScreen(
                 onNavigateToSignUp = {

@@ -1,7 +1,7 @@
 package com.towerofapp.lookmyshow.data.local.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.towerofapp.lookmyshow.data.model.BookedTicket
+import com.towerofapp.lookmyshow.domain.model.BookedTicket
 
 
 @Entity(tableName = "booked_tickets")

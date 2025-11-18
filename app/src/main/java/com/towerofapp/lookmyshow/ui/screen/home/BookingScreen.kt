@@ -36,11 +36,9 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
 import com.towerofapp.lookmyshow.core.AppConfig
 import com.towerofapp.lookmyshow.core.AppConfig.ticketPrice
-import com.towerofapp.lookmyshow.data.model.BookedTicket
+import com.towerofapp.lookmyshow.domain.model.BookedTicket
 import com.towerofapp.lookmyshow.ui.viewmodel.BookedTicketViewModel
 import kotlinx.coroutines.launch
 
@@ -93,7 +91,7 @@ fun BookingScreen(
                             .padding(vertical = 8.dp)
                             .clickable {
                                 coroutineScope.launch {
-                                    viewModel.saveBookedTicket(BookedTicket(movieTitle = movieTitle, theater = theater, bookedSeats = seats.joinToString(separator = ","), price = (AppConfig.ticketPrice * seats.size).toString(), timing = timing))
+                                    viewModel.saveBookedTicket(BookedTicket(movieTitle = movieTitle, theater = theater, bookedSeats = seats.joinToString(separator = ","), price = (ticketPrice * seats.size).toString(), timing = timing))
                                 }
                                 onNavigateToSuccess()
                             },
