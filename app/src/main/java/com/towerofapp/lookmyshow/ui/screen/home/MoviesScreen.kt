@@ -17,7 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.towerofapp.lookmyshow.domain.model.Movie
+import com.towerofapp.lookmyshow.data.model.Movie
 import com.towerofapp.lookmyshow.ui.components.MovieItem
 import com.towerofapp.lookmyshow.ui.navigation.Screen
 import com.towerofapp.lookmyshow.ui.viewmodel.MoviesViewModel

@@ -2,7 +2,7 @@ package com.towerofapp.lookmyshow.data.remote
 
 import android.util.Log
 import com.squareup.moshi.Moshi
-import com.towerofapp.lookmyshow.domain.model.MovieListResponse
+import com.towerofapp.lookmyshow.data.model.MovieListResponse
 import javax.inject.Inject
 import javax.inject.Singleton
 

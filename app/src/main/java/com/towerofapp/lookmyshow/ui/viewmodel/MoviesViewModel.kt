@@ -2,8 +2,8 @@ package com.towerofapp.lookmyshow.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.towerofapp.lookmyshow.domain.model.Movie
-import com.towerofapp.lookmyshow.domain.model.Theater
+import com.towerofapp.lookmyshow.data.model.Movie
+import com.towerofapp.lookmyshow.data.model.Theater
 import com.towerofapp.lookmyshow.domain.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

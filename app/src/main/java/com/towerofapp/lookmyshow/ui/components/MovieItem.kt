@@ -29,7 +29,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.towerofapp.lookmyshow.domain.model.Movie
+import com.towerofapp.lookmyshow.data.model.Movie
 import coil.compose.rememberAsyncImagePainter
 import java.text.DecimalFormat
 
